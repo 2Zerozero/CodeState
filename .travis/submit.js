@@ -6,7 +6,7 @@ if (TRAVIS_PULL_REQUEST_SLUG === "\n") {
   throw new Error("github username is missing");
 }
 
-exec("jest --json", (err, json, stderr) => {
+exec("jest ./__test__/index.test.js --json", (err, json, stderr) => {
   const result = JSON.parse(json);
   const username = TRAVIS_PULL_REQUEST_SLUG.split("/")[0];
 

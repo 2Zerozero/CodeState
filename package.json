@@ -13,7 +13,7 @@
     "request": "^2.88.0"
   },
   "scripts": {
-    "test": "jest",
+    "test": "jest __test__/index.test.js",
     "submit": "node .travis/submit.js"
   },
   "author": "",

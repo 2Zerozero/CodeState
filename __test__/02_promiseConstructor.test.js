@@ -3,7 +3,7 @@ const {
   getDataFromFilePromise
 } = require("../exercises/02_promiseConstructor");
 
-describe("Promisification Test", () => {
+describe("Promise Test", () => {
   describe("getBodyFromGetRequestPromise", () => {
     const requestUrl = "https://koreanjson.com/posts/1";
 
