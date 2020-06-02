@@ -1,5 +1,5 @@
 const fs = require("fs");
-const request = require("request");
+const https = require("https");
 
 /*
  * 아래 함수는 파일에 있는 데이터들을 한 줄 씩 Array에 담아 callback 함수에 주어야합니다.
@@ -34,13 +34,24 @@ const getDataFromFilePromise = filePath => {
  */
 const getBodyFromGetRequestPromise = url => {
   return new Promise((resolve, reject) => {
-    request(url, { json: true }, (err, res, body) => {
-      if (err) {
+    try {
+      https.get(url, (res) => {
+        let body = ''
+        res.on('data', chunk => {
+          body = body + chunk;
+        });
+
+        res.on('end', () => {
+          body = JSON.parse(body.toString());
+          resolve(body);
+        });
+
+      }).on('error', err => {
         reject(err);
-      } else {
-        resolve(body);
-      }
-    });
+      })
+    } catch(err) {
+      reject(err);
+    }
   });
 };
 

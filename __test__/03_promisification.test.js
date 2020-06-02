@@ -23,7 +23,7 @@ describe("Promisification Test", () => {
 
     it("should catch errors in the `catch` block", () => {
       return getBodyFromGetRequestPromise("none").catch(err => {
-        expect(err.message).toBe('Invalid URI "none"');
+        expect(err.message).toBe('Invalid URL: none');
       });
     });
   });

@@ -47,7 +47,7 @@ describe("Callback Test", () => {
 
     test("should invoke the callback with an error as the first argument", done => {
       getBodyFromGetRequest("none", (err, body) => {
-        expect(err.message).toBe('Invalid URI "none"');
+        expect(err.message).toBe('Invalid URL: none');
         expect(body).toBeNull();
         done();
       });
