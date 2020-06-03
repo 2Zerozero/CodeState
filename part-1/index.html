@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #card {
+      width: 400px;
+      height: 400px;
+      position: relative;
+      border: 1px solid silver;
+    }
+
+    #title {
+      visibility: hidden;
+      opacity: 0;
+      background-color: rgba(0,0,0,.2);
+      color: black;
+      transition: visibility 0.5s, opacity 0.5s, background-color 0.5s, color 0.5s linear;
+
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      margin: 0;
+      padding: 10px;
+    }
+
+    #title.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #title.highlight {
+      background-color: rgba(255, 166, 0, 0.8);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div style="margin-bottom: 10px">
+    animate with
+    <button id="btnCallback">callback</button>
+    <button id="btnPromise">promise</button>
+    <button id="btnAsync">async & await</button>
+  </div>
+
+  <div id="card">
+    <video id="player" muted playsinline loop width="398">
+      <source src="bom.webm" type="video/webm">
+    </video>
+    <h1 id="title">cutest cat ever</h1>
+  </div>
+
+
+  <div style="height: 200px; overflow: scroll;">
+    <div id="logger" style="background-color: #ddd; padding: 10px; font-size: 0.9em;">
+
+    </div>
+  </div>
+
+  <script src="01_callback.js"></script>
+  <script src="02_promiseConstructor.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

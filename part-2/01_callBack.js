@@ -1,5 +1,4 @@
 const fs = require("fs");
-const https = require('https');
 
 /*
  * 아래 함수는 파일에 있는 데이터들을 한 줄 씩 Array에 담아 callback 함수에 주어야합니다.
@@ -27,31 +26,6 @@ const getDataFromFile = function(filePath, callback) {
   });
 };
 
-/**
- * 아래 함수는 항상 Http Response의 Body를 callback함수에 넘겨주어야 합니다.
- */
-const getBodyFromGetRequest = function(url, callback) {
-  try {
-    https.get(url, (res) => {
-      let body = ''
-      res.on('data', chunk => {
-        body = body + chunk;
-      });
-
-      res.on('end', () => {
-        body = JSON.parse(body.toString());
-        callback(null, body);
-      });
-
-    }).on('error', err => {
-      callback(err, null);
-    })
-  } catch(err) {
-    callback(err, null);
-  }
-};
-
 module.exports = {
-  getDataFromFile: getDataFromFile,
-  getBodyFromGetRequest: getBodyFromGetRequest
+  getDataFromFile: getDataFromFile
 };
