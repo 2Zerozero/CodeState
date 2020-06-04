@@ -1,8 +1,19 @@
-const fs = require("fs");
+const path = require('path');
 
-const { fetchUsersAndWriteToFile } = require("../exercises/04_basicChaining");
+const { readAllUsersChaining } = require("../03_basicChaining");
 
 describe("Basic chaining Test", () => {
+  describe('readAllUsersChaining', () => {
+    test('체이닝의 결과가 Promise 형태로 리턴되어야 합니다.', () => {
+      const result = readAllUsersChaining();
+      expect(result.constructor.name).toBe('Promise');
+    })
+    test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', () => {
+      expect(true).toBeTruthy();
+    })
+  })
+
+  /*
   describe("fetchUsersAndWriteToFile", () => {
     const readFilePath = "files/read/userId.txt";
     const writeFilePath = "files/write/userName.txt";
@@ -26,5 +37,5 @@ describe("Basic chaining Test", () => {
         expect(userNames).toBe("이정도\n김재완\n김성은\n이주연\n구일모\n");
       });
     });
-  });
+    */
 });

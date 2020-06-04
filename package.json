@@ -7,7 +7,7 @@
     "jest": "^24.9.0"
   },
   "scripts": {
-    "test": "jest __test__/index.test.js",
+    "test": "jest part-2/__test__/index.test.js",
     "submit": "node .travis/submit.js"
   },
   "author": "",
