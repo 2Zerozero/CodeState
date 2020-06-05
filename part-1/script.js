@@ -34,10 +34,10 @@ function runPromise() {
     pauseVideo();
     displayTitle();
   })
-  .then(sleep.bind(null, 500))
-  .then(highlightTitle)
-  .then(sleep.bind(null, 2000))
-  .then(resetTitle)
+    .then(sleep.bind(null, 500))
+    .then(highlightTitle)
+    .then(sleep.bind(null, 2000))
+    .then(resetTitle)
 }
 
 async function runAsync() {
