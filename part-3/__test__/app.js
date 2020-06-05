@@ -25,15 +25,15 @@ app.get('/user/:id', async (req, res) => {
   const user = users[id - 1];
 
   if (!users.some(user => user.id === id)) {
-    res.status(404).json({ err: 'id에 해당하는 사용자가 없습니다' });
+    res.status(404).json({
+      errorMessage: 'id에 해당하는 사용자가 존재하지 않습니다'
+    });
   } else {
     res.status(200).json(user)
   }
 });
 
-const server = app.listen(4000, function () {
-  console.log('Server is working : PORT - ', 4000);
-});
+const server = app.listen(4000);
 
 module.exports = {
   app,

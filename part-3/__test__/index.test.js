@@ -24,6 +24,7 @@ describe('', () => {
   require('./02_fetch.test');
   require('./03_basicChaining.test');
   require('./04_promiseAll.test');
+  require('./05_asyncAwait.test');
 
   afterAll(() => {
     server.close();
