@@ -1,26 +1,19 @@
-const { getDataFromFilePromise } = require('./02_fetch');
+const { fetch } = require('./02_fetch');
 
-const user1URL = '/user/1'
-const user2URL = '/user/2'
+const user1URL = 'http://localhost:4000/user/1';
+const user2URL = 'http://localhost:4000/user/2';
 
 const readAllUsersChaining = () => {
-  // todo
-
-  /* fetch 두번 써서
-
-  [{
-    id: 1,
-    name: '김코딩'
-  },
-  {
-    id: 2,
-    name: '박해커'
-  }]
-
-  */
+  return fetch(user1URL)
+    .then(resp => resp.json())
+    .then(json1 => {
+      return fetch(user2URL)
+        .then(resp => resp.json())
+        .then(json2 => {
+          return [json1, json2]
+        });
+    })
 }
-
-readAllUsersChaining();
 
 module.exports = {
   readAllUsersChaining

@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "jest part-3/__test__/index.test.js",
+    "server": "node part-3/__test__/app.js",
     "submit": "node .travis/submit.js"
   },
   "author": "",

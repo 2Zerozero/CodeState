@@ -1,8 +1,8 @@
-const https = require('https')
+const http = require('http')
 
 const getBodyFromGetRequest = function (url, callback) {
   try {
-    https.get(url, (res) => {
+    http.get(url, (res) => {
       let body = ''
       res.on('data', chunk => {
         body = body + chunk;

@@ -1,17 +1,20 @@
-const https = require('https')
+const http = require('http')
 
 const fetch = function (url) {
   return new Promise((resolve, reject) => {
     try {
-      https.get(url, (res) => {
+      http.get(url, (res) => {
         let body = ''
         res.on('data', chunk => {
           body = body + chunk;
         });
 
         res.on('end', () => {
-          body = JSON.parse(body.toString());
-          resolve(body)
+          resolve({
+            json: () => {
+              return JSON.parse(body.toString())
+            }
+          })
         });
 
       }).on('error', err => {
