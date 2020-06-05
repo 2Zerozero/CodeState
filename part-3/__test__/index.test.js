@@ -23,6 +23,7 @@ describe('', () => {
   require('./01_callBack.test');
   require('./02_fetch.test');
   require('./03_basicChaining.test');
+  require('./04_promiseAll.test');
 
   afterAll(() => {
     server.close();

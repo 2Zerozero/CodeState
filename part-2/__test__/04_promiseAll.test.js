@@ -2,7 +2,7 @@ const { readAllUsers } = require("../04_promiseAll");
 
 describe("Promise.all Test", () => {
   describe('readAllUsers', () => {
-    test('체이닝의 결과가 Promise 형태로 리턴되어야 합니다.', () => {
+    test('Promise 형태로 리턴되어야 합니다.', () => {
       const result = readAllUsers();
       expect(result.constructor.name).toBe('Promise');
     })
