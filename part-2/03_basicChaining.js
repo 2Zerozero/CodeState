@@ -1,5 +1,4 @@
 const path = require('path');
-
 const { getDataFromFilePromise } = require('./02_promiseConstructor');
 
 const user1Path = path.join(__dirname, 'files/user1.json');

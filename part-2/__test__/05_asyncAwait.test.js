@@ -1,32 +1,36 @@
-const fs = require("fs");
+const { readAllUsersAsyncAwait } = require("../05_asyncAwait");
 
-const { fetchUsersAndWriteToFileAsync } = require("../exercises/05_asyncAwait");
-
-describe("Async & Await Test", () => {
-  describe("fetchUsersAndWriteToFileAsync", () => {
-    const readFilePath = "files/read/userId.txt";
-    const writeFilePath = "files/write/userName.txt";
-
-    beforeEach(() => {
-      fs.writeFileSync(writeFilePath, "");
-    });
-
-    afterEach(() => {
-      fs.writeFileSync(writeFilePath, "");
-    });
-
-    test("should return the promise created by the entire chain", () => {
-      const result = fetchUsersAndWriteToFileAsync(readFilePath, writeFilePath);
-      expect(result.constructor.name).toBe("Promise");
-    });
-
-    test("should eventually write a user name to a file", () => {
-      return fetchUsersAndWriteToFileAsync(readFilePath, writeFilePath).then(
-        () => {
-          const userNames = fs.readFileSync(writeFilePath, "utf8");
-          expect(userNames).toBe("이정도\n김재완\n김성은\n이주연\n구일모\n");
+describe("async/await Test", () => {
+  describe('readAllUsersAsyncAwait', () => {
+    test('async 키워드를 사용한 함수는 AsyncFunction의 인스턴스입니다.', () => {
+      let AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
+      expect(readAllUsersAsyncAwait).toBeInstanceOf(AsyncFunction);
+    })
+    test('await 키워드는  리턴되어야 합니다.', async () => {
+      const result = await readAllUsersAsyncAwait();
+      expect(Array.isArray(result)).toBe(true);
+    })
+    test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', async () => {
+      const result = await readAllUsersAsyncAwait();
+      const userArray = [
+        {
+          "name": "김코딩",
+          "age": 26,
+          "sex": "Male",
+          "company": {
+            "name": "코드스테이츠"
+          }
+        },
+        {
+          "name": "박해커",
+          "age": 40,
+          "sex": "Female",
+          "company": {
+            "name": "Anomymous"
+          }
         }
-      );
-    });
-  });
+      ]
+      expect(result).toEqual(userArray);
+    })
+  })
 });
