@@ -7,9 +7,13 @@
     "jest": "^24.9.0"
   },
   "scripts": {
-    "test": "jest part-2/__test__/index.test.js",
+    "test": "jest part-3/__test__/index.test.js",
     "submit": "node .travis/submit.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "supertest": "^4.0.2"
+  }
 }
