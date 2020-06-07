@@ -4,7 +4,7 @@ const {
 
 describe('Promise.all Test', () => {
   describe('readAllUsers', () => {
-    test('Promise 형태로 리턴되어야 합니다.', () => {
+    test('Promise 형태로 리턴되어야 합니다', () => {
       const result = readAllUsers()
       expect(result.constructor.name).toBe('Promise');
     })
@@ -13,7 +13,7 @@ describe('Promise.all Test', () => {
       expect(readAllUsers.toString()).toMatch(/Promise\.all/g);
     });
 
-    test('/user/1의 내용과 /user/2 내용을 합쳐 객체로 리턴되어야 합니다', (done) => {
+    test('/user/1의 응답 내용과 /user/2 응답 내용을 합쳐 배열로 리턴되어야 합니다', (done) => {
       readAllUsers().then(json => {
         const userArray = [
           {

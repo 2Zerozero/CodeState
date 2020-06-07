@@ -10,7 +10,7 @@ describe('Chaining Test', () => {
       expect(result.constructor.name).toBe('Promise');
     });
 
-    test('/user/1의 내용과 /user/2 내용을 합쳐 객체로 리턴되어야 합니다', (done) => {
+    test('/user/1의 응답 내용과 /user/2 응답 내용을 합쳐 배열로 리턴되어야 합니다', (done) => {
       readAllUsersChaining().then(json => {
         const userArray = [
           {

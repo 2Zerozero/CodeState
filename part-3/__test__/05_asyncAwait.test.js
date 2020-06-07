@@ -2,7 +2,7 @@ const { readAllUsersAsyncAwait } = require("../05_asyncAwait");
 
 describe("async/await Test", () => {
   describe('readAllUsersAsyncAwait', () => {
-    test('async 키워드를 사용한 함수는 AsyncFunction의 인스턴스입니다.', () => {
+    test('async 키워드를 사용한 함수는 AsyncFunction의 인스턴스입니다', () => {
       const AsyncFunction = Object.getPrototypeOf(async function () { }).constructor;
       expect(readAllUsersAsyncAwait).toBeInstanceOf(AsyncFunction);
     })
