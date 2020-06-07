@@ -14,7 +14,7 @@ const readAllUsersAsyncAwait = async () => {
   return json;
 }
 
-readAllUsersAsyncAwait();
+// readAllUsersAsyncAwait();
 
 module.exports = {
   readAllUsersAsyncAwait

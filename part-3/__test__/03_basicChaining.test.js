@@ -1,10 +1,11 @@
+const fs = require('fs');
 const {
   readAllUsersChaining
 } = require('../03_basicChaining');
 
 describe('Chaining Test', () => {
   describe('readAllUsersChaining', () => {
-    test('체이닝의 결과가 Promise 형태로 리턴되어야 합니다.', () => {
+    test('체이닝의 결과가 Promise 형태로 리턴되어야 합니다', () => {
       const result = readAllUsersChaining()
       expect(result.constructor.name).toBe('Promise');
     });
@@ -26,8 +27,20 @@ describe('Chaining Test', () => {
       });
     });
 
-    test('Promise.all을 사용하지 않고 풀어보세요', () => {
-      expect(readAllUsersChaining.toString()).not.toMatch(/Promise\.all/g);
+
+    test('http module을 직접 사용하는 것이 아닙니다', () => {
+      const contents = fs.readFileSync('./part-3/03_basicChaining.js').toString();
+      expect(contents).not.toMatch('require\("http"\)', 'g');
+      expect(contents).not.toMatch("require\('http'\)", 'g');
     });
+
+    test('fetch를 활용하세요. 총 두 번 사용해야 합니다', () => {
+      expect(readAllUsersChaining.toString().match(/fetch/g)).toHaveLength(2);
+    });
+
+    test('Promise.all 또는 async/await 을 사용하지 않고 풀어보세요', () => {
+      expect(readAllUsersChaining.toString()).not.toMatch(/Promise\.all/g);
+      expect(readAllUsersChaining.toString()).not.toMatch(/await/g);
+    })
   });
 });

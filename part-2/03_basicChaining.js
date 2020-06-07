@@ -14,7 +14,7 @@ const readAllUsersChaining = () => {
     .then(text => JSON.parse(text))
 }
 
-readAllUsersChaining();
+// readAllUsersChaining();
 
 module.exports = {
   readAllUsersChaining

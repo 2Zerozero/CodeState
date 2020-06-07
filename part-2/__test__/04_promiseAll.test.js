@@ -2,10 +2,15 @@ const { readAllUsers } = require("../04_promiseAll");
 
 describe("Promise.all Test", () => {
   describe('readAllUsers', () => {
-    test('Promise 형태로 리턴되어야 합니다.', () => {
+    test('Promise 형태로 리턴되어야 합니다', () => {
       const result = readAllUsers();
       expect(result.constructor.name).toBe('Promise');
-    })
+    });
+
+    test('Promise.all을 사용해서 풀어야 합니다', () => {
+      expect(readAllUsers.toString()).toMatch(/Promise\.all/g);
+    });
+
     test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', () => {
       readAllUsers().then(json => {
         const userArray = [
@@ -28,6 +33,6 @@ describe("Promise.all Test", () => {
         ]
         expect(json).toEqual(userArray);
       })
-    })
-  })
+    });
+  });
 });

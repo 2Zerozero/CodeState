@@ -12,6 +12,8 @@ const getDataFromFilePromise = filePath => {
   });
 };
 
+// getDataFromFilePromise('README.md').then(data => console.log(data));
+
 module.exports = {
   getDataFromFilePromise
 };

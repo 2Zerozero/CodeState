@@ -15,6 +15,8 @@ const readAllUsers = () => {
     .then(text => JSON.parse(text))
 }
 
+// readAllUsers()
+
 module.exports = {
   readAllUsers
 }

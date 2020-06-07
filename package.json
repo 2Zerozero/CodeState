@@ -7,6 +7,7 @@
     "jest": "^24.9.0"
   },
   "scripts": {
+    "test": "jest part-*/__test__/index.test.js --verbose",
     "test:part-2": "jest part-2/__test__/index.test.js",
     "test:part-3": "jest part-3/__test__/index.test.js",
     "server": "node part-3/__test__/app.js",

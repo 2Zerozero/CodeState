@@ -4,7 +4,7 @@ const {
 
 describe('Promise Test', () => {
   describe('fetch', () => {
-    test('fetch 성공시 넘겨주는 응답 객체는 json 메소드를 포함합니다', done => {
+    test('fetch 성공시 then을 통해 넘겨주는 응답 객체는 json 메소드를 포함합니다', done => {
       fetch('http://localhost:4000/user/1')
         .then(resp => {
           expect(typeof resp.json).toBe('function')
