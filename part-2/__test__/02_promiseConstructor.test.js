@@ -20,15 +20,17 @@ describe("Promise Test", () => {
       expect(result.constructor.name).toBe("Promise");
     });
 
-    it("then 블록을 통하여 파일 내용이 전달되어야 합니다", () => {
+    it("then 블록을 통하여 파일 내용이 전달되어야 합니다", (done) => {
       return getDataFromFilePromise(jsonPath).then(data => {
         expect(data).toBe(user1txt);
+        done()
       });
     });
 
-    it("에러가 발생할 경우, catch 블록을 통하여 에러 객체가 전달되어야 합니다", () => {
+    it("에러가 발생할 경우, catch 블록을 통하여 에러 객체가 전달되어야 합니다", (done) => {
       return getDataFromFilePromise('nonexist').catch(err => {
         expect(err.code).toBe("ENOENT");
+        done()
       });
     });
   });

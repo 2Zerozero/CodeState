@@ -8,7 +8,7 @@ describe("Basic chaining Test", () => {
       expect(result.constructor.name).toBe('Promise');
     });
 
-    test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', () => {
+    test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', (done) => {
       readAllUsersChaining().then(json => {
         const userArray = [
           {
@@ -29,6 +29,7 @@ describe("Basic chaining Test", () => {
           }
         ]
         expect(json).toEqual(userArray);
+        done()
       })
     });
 

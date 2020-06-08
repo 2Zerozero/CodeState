@@ -11,7 +11,7 @@ describe("Promise.all Test", () => {
       expect(readAllUsers.toString()).toMatch(/Promise\.all/g);
     });
 
-    test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', () => {
+    test('user1.json의 내용과 user2.json 내용을 합쳐 객체로 리턴되어야 합니다', (done) => {
       readAllUsers().then(json => {
         const userArray = [
           {
@@ -32,6 +32,7 @@ describe("Promise.all Test", () => {
           }
         ]
         expect(json).toEqual(userArray);
+        done()
       })
     });
   });
