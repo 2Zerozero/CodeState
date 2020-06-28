@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://unpkg.com/mocha@5.2.0/mocha.css" rel="stylesheet" />
+  <script src="https://unpkg.com/chai/chai.js"></script>
+  <script src="https://unpkg.com/mocha@5.2.0/mocha.js"></script>
+  <script src="https://sinonjs.org/releases/sinon-6.1.5.js"></script>
+  <style>
+    .title {
+      margin: 30px 60px 0;
+      font-weight: 500
+    }
+
+    .callout {
+      padding: 20px;
+      margin: 30px 60px 0;
+      font-size: 0.9rem;
+      background-color: #eee;
+    }
+  </style>
+</head>
+
+<body>
+  <h1 class="title">Promise Part III</h1>
+  <div class="callout">
+    제대로 작성한 것 같으나, 테스트가 통과하지 않는다면, 서버를 작동시켰는지 확인해보세요. <code>npm run server:part-3</code>으로 서버를 켤 수 있습니다.
+  </div>
+
+  <div id="mocha"></div>
+
+  <script src="01_basicChaining.js"></script>
+  <script src="02_promiseAll.js"></script>
+  <script src="03_asyncAwait.js"></script>
+
+  <script>
+    mocha.setup('bdd');
+    window.expect = chai.expect;
+    window.assert = chai.assert;
+  </script>
+  <script src="__test__/01_basicChaining.test.js"></script>
+  <script src="__test__/02_promiseAll.test.js"></script>
+  <script src="__test__/03_asyncAwait.test.js"></script>
+  <script>
+    mocha.checkLeaks();
+    mocha.run();
+  </script>
+</body>
+
+</html>

@@ -1,39 +1,28 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
+app.use(cors());
 
-let users = [
-  {
-    id: 1,
-    name: '김코딩'
-  },
-  {
-    id: 2,
-    name: '박해커'
-  },
-  {
-    id: 3,
-    name: '박성용'
-  },
-  {
-    id: 4,
-    name: '이호용'
-  }
-]
+const data = {
+  "data": [
+    { "row_id": 2, "title": "2021년 경제 성장률 전망 밝아", "source": "A신문", "timestamp": "2020/12/30" },
+    { "row_id": 3, "title": "코로나19 증가추세 대폭 하락해", "source": "BBC", "timestamp": "2020/12/29" },
+    { "row_id": 4, "title": "코드스테이츠 취업연계 파트너사 xxx건 돌파", "source": "스타트업 뉴스", "timestamp": "2020/12/31" }
+  ]
+};
 
-app.get('/user/:id', async (req, res) => {
-  const id = parseInt(req.params.id, 10);
-  const user = users[id - 1];
-
-  if (!users.some(user => user.id === id)) {
-    res.status(404).json({
-      errorMessage: 'id에 해당하는 사용자가 존재하지 않습니다'
-    });
-  } else {
-    res.status(200).json(user)
-  }
+app.get('/data/latestNews', async (req, res) => {
+  res.status(200).json(data)
 });
 
-const server = app.listen(4000);
+app.get('/data/weather', async (req, res) => {
+  res.status(200).json({ "status": "sunny", "tempature": "28", "finedust": "good" });
+});
+
+const server = app.listen(5000);
+
+console.log('http://localhost:5000/data/latestNews 에서 뉴스를 얻을 수 있습니다');
+console.log('http://localhost:5000/data/weather 에서 날씨를 얻을 수 있습니다');
 
 module.exports = {
   app,
