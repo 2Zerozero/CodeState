@@ -1,0 +1,16 @@
+{
+  "name": "sw-sprints-js-cal",
+  "version": "1.0.0",
+  "main": "script.js",
+  "author": "Hong Shik Branden Kim <kimploo@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "mocha spec/index.test.js",
+    "submit": "node .travis/submit.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "jsdom": "16.4.0",
+    "mocha": "^7.2.0"
+  }
+}

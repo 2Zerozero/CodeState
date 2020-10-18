@@ -1,0 +1,63 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mocha Tests</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/mocha/mocha.css" />
+  </head>
+  <style>
+    #hidden {
+      display: none;
+    }
+  </style>
+  <body>
+    <div id="hidden">
+      <div class="container">
+        <div class="calculator">
+          <div class="calculator__display">0</div>
+          <div class="calculator__buttons">
+            <div class="clear__and__enter">
+              <button class="clear">AC</button>
+              <button class="calculate">Enter</button>
+            </div>
+            <div class="button__row">
+              <button class="number">7</button>
+              <button class="number">8</button>
+              <button class="number">9</button>
+              <button class="operator">+</button>
+            </div>
+            <div class="button__row">
+              <button class="number">4</button>
+              <button class="number">5</button>
+              <button class="number">6</button>
+              <button class="operator">-</button>
+            </div>
+            <div class="button__row">
+              <button class="number">1</button>
+              <button class="number">2</button>
+              <button class="number">3</button>
+              <button class="operator">*</button>
+            </div>
+            <div class="button__row">
+              <button class="number double">0</button>
+              <button class="decimal">.</button>
+              <button class="operator">/</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script src="./src/script.js"></script>
+    </div>
+    <div id="mocha"></div>
+    <script src="https://unpkg.com/chai/chai.js"></script>
+    <script src="https://unpkg.com/mocha/mocha.js"></script>
+    <script class="mocha-init">
+      mocha.setup('bdd');
+    </script>
+    <script src="./spec/bare.spec.js"></script>
+    <!-- <script src="./spec/advanced.spec.js"></script> -->
+    <script class="mocha-exec">
+      mocha.run();
+    </script>
+  </body>
+</html>
