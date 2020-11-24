@@ -16,7 +16,7 @@ body {
             rgba(223, 169, 169, 0.288),
             rgba(255, 255, 255, 0)
         ),
-        url('./codestates-motif.png');
+        url('./data/codestates-motif.png');
 }
 
 /*
@@ -31,7 +31,7 @@ body {
 }
 
 .calculator {
-    background: url(./codestates-logo.png) no-repeat 96% 37%;
+    background: url(./data/codestates-logo.png) no-repeat 96% 37%;
     background-size: 90px;
     background-color: #fd96ab;
     width: 350px;

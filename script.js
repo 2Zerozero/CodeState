@@ -1,4 +1,4 @@
-var firstNum, operator, previousKey, previousNum;
+let firstNum, operator, previousKey, previousNum;
 // 위의 전역변수를 잘 활용하여, 계산기를 구현합니다.
 
 const calculator = document.querySelector('.calculator'); // calculator 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
@@ -7,7 +7,7 @@ const display = document.querySelector('.calculator__display'); // calculator__d
 // ! 위 코드(Line 1 - 6)는 수정하지 마세요.
 
 function calculate(n1, operator, n2) {
-  let result = '';
+  let result = 0;
   // TODO : n1과 n2를 operator에 따라 계산하는 함수를 만드세요.
   // ex) 입력값이 n1 : '1', operator : '+', n2 : '2' 인 경우, 3이 리턴됩니다.
   return result;
