@@ -14,7 +14,14 @@
     <div id="hidden">
       <div class="container">
         <div class="calculator">
-          <div class="calculator__display">0</div>
+          <div class="calculator__display--bare">
+            <span class="calculator__operend--left">0</span>
+            <span class="calculator__operator">+</span>
+            <span class="calculator__operend--right">0</span>
+            <span class="calculator__equal">=</span>
+            <span class="calculator__result">0</span>
+          </div>
+          <div class="calculator__display--intermediate">0</div>
           <div class="calculator__buttons">
             <div class="clear__and__enter">
               <button class="clear">AC</button>
@@ -45,8 +52,9 @@
             </div>
           </div>
         </div>
+        <img class="logo" src="data/codestates-logo.png">
       </div>
-      <script src="./src/script.js"></script>
+      <script src='./script.js'></script>
     </div>
     <div id="mocha"></div>
     <script src="https://unpkg.com/chai/chai.js"></script>
