@@ -27,16 +27,147 @@ if (typeof window === 'undefined') {
 }
 
 function test(window, expect) {
-  describe('Bare minimum test', function () {
+  describe('bare minimum test', function () {
     bare(window, expect);
   });
-  describe('Advanced Challenge test', function () {
-    advanced(window, expect);
-  });
+  // describe('Intermediate test', function () {
+  //   intermediate(window, expect);
+  // });
+  // describe('Advanced Challenge test', function () {
+  //   advanced(window, expect);
+  // });
 }
 
 function bare(window, expect) {
-  describe('유어클레스 레슨의 예를 통과합니다.', function () {
+  describe('유어클레스 bare minimum 레슨의 예를 통과합니다.', function () {
+    afterEach(function () {
+      clearButton.dispatchEvent(clickEvent);
+    });
+
+    const getButtonBy = function (text, buttons) {
+      const result = buttons.filter(function (button) {
+        return button.textContent === text;
+      });
+
+      if (result.length > 1) {
+        throw new Error('no extra buttons allowed');
+      } else if (result.length < 1) {
+        throw new Error('no button');
+      }
+
+      return result[0];
+    };
+
+    const clickEvent = new window.MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    });
+
+    // const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
+    const numberButtons = [...window.document.querySelectorAll('.number')];
+    // const operators = ['+', '-', '*', '/'];
+    const operatorButtons = [...window.document.querySelectorAll('.operator')];
+    const decimalButton = window.document.querySelector('.decimal');
+    const clearButton = window.document.querySelector('.clear');
+    const enterButton = window.document.querySelector('.calculate');
+    const allButtons = [clearButton, enterButton, decimalButton, ...numberButtons, ...operatorButtons];
+
+    it('처음 숫자 버튼을 눌렀을 때, 첫 번째 화면에 누른 숫자가 보여야 합니다.', function (done) {
+      const test = ['7', '7'];
+      const clicks = test.slice(0, -1);
+      const expected = test.slice(-1)[0];
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      clicks.forEach(function (click) {
+        const button = getButtonBy(click, allButtons);
+        button.dispatchEvent(clickEvent);
+      });
+      expect(firstOperend.textContent).to.equal(expected);
+      done();
+    });
+
+    it('숫자 버튼과 연산자 버튼을 눌렀을 때, 첫 번째 화면는 숫자, 두 번째 화면에는 연산자가 보여야 합니다.', function (done) {
+      const clicks = ['7', '+'];
+      const expected = ['7', '+']; 
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const operator = window.document.querySelector('.calculator__operator');
+      clicks.forEach(function (click) {
+        const button = getButtonBy(click, allButtons);
+        button.dispatchEvent(clickEvent);
+      });
+      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(operator.textContent).to.be.equal(expected[1]);
+      done();
+    });
+
+    it('숫자 버튼, 연산자 버튼, 숫자 버튼을 눌렀을 때, 화면에 숫자, 연산자, 순자의 순서로 보여야 합니다.', function (done) {
+      const clicks = ['7', '+', '5'];
+      const expected = ['7', '+', '5']; 
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const operator = window.document.querySelector('.calculator__operator');
+      const secondOperend = window.document.querySelector('.calculator__operator--right');
+      clicks.forEach(function (click) {
+        const button = getButtonBy(click, allButtons);
+        button.dispatchEvent(clickEvent);
+      });
+      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(operator.textContent).to.be.equal(expected[1]);
+      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      done();
+    });
+
+    it('숫자 버튼, 연산자 버튼, 숫자 버튼, 엔터 버튼을 눌렀을 때, 화면에 숫자, 연산자, 숫자, =, 연산 결과의 순서로 보여야 합니다.', function (done) {
+      const clicks = ['7', '+', '5', '12'];
+      const expected = ['7', '+', '5', '12']; 
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const operator = window.document.querySelector('.calculator__operator');
+      const secondOperend = window.document.querySelector('.calculator__operator--right');
+      const calculatedResult = window.document.querySelector('.calculator__result');
+      clicks.forEach(function (click) {
+        const button = getButtonBy(click, allButtons);
+        button.dispatchEvent(clickEvent);
+      });
+      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(operator.textContent).to.be.equal(expected[1]);
+      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(calculatedResult.textContent).to.be.equal(expected[3]);
+      done();
+    });
+
+    it('clear 버튼을 눌렀을 때, 화면에 0, +, 0, =, 0 순서로 보여야 합니다.', function (done) {
+      const clicks = ['7', '+', '5', '12'];
+      const expected = ['7', '+', '5', '12']; 
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const operator = window.document.querySelector('.calculator__operator');
+      const secondOperend = window.document.querySelector('.calculator__operator--right');
+      const calculatedResult = window.document.querySelector('.calculator__result');
+
+      clicks.forEach(function (click) {
+        const button = getButtonBy(click, allButtons);
+        button.dispatchEvent(clickEvent);
+      });
+
+      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(operator.textContent).to.be.equal(expected[1]);
+      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(calculatedResult.textContent).to.be.equal(expected[3]);
+
+      const clearButton = window.document.querySelector('.clear');
+      clearButton.dispatchEvent(clickEvent)
+
+      expect(firstOperend.textContent).to.be.equal('0');
+      expect(operator.textContent).to.be.equal('+');
+      expect(secondOperend.textContent).to.be.equal('0');
+      expect(calculatedResult.textContent).to.be.equal('0');
+
+      done();
+    });
+
+  });
+}
+
+function intermediate(window, expect) {
+  describe('유어클레스 intermediate 레슨의 예를 통과합니다.', function () {
     afterEach(function () {
       clearButton.dispatchEvent(clickEvent);
     });
@@ -425,7 +556,44 @@ function advanced(window, expect) {
 
       const complicateConsecutiveCalculationTests = [
         // eslint-disable-next-line prettier/prettier
-        ['1', '0', '0', '.', '.', '1', '2', '5', '2', '+', '1', '2', '+', '1', '5', '-', '-', '2', '3', '-', '1', '4', '4', '2', '/', '2', '3', '/', '/', '1', '2', '*', '2', '3', 'Enter', '-111.48956666666668'],
+        [
+          '1',
+          '0',
+          '0',
+          '.',
+          '.',
+          '1',
+          '2',
+          '5',
+          '2',
+          '+',
+          '1',
+          '2',
+          '+',
+          '1',
+          '5',
+          '-',
+          '-',
+          '2',
+          '3',
+          '-',
+          '1',
+          '4',
+          '4',
+          '2',
+          '/',
+          '2',
+          '3',
+          '/',
+          '/',
+          '1',
+          '2',
+          '*',
+          '2',
+          '3',
+          'Enter',
+          '-111.48956666666668',
+        ],
       ];
 
       const advancedTests = [

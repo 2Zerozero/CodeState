@@ -1,10 +1,14 @@
-let firstNum, operator, previousKey, previousNum;
-// 위의 전역변수를 잘 활용하여, 계산기를 구현합니다.
-
 const calculator = document.querySelector('.calculator'); // calculator 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
 const buttons = calculator.querySelector('.calculator__buttons'); // calculator__keys 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-const display = document.querySelector('.calculator__display'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-// ! 위 코드(Line 1 - 6)는 수정하지 마세요.
+
+const firstOperend = document.querySelector('.calculator__operend--left'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const operator = document.querySelector('.calculator__operator'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const secondOperend = document.querySelector('.calculator__operend--right'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const calculatedResult = document.querySelector('.calculator__result'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+
+// ! intermediate, advanced test를 위한 코드입니다. 필요 시 주석을 해제하세요.
+// const display = document.querySelector('.calculator__display--intermediate'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+// let firstNum, operator, previousKey, previousNum; 
 
 function calculate(n1, operator, n2) {
   let result = 0;
@@ -28,27 +32,22 @@ buttons.addEventListener('click', function (event) {
       // 그리고 버튼의 클레스가 number이면
       // 아래 코드가 작동됩니다.
       console.log('숫자 ' + buttonContent + ' 버튼');
-      previousKey = 'number';
     }
 
     if (action === 'operator') {
       console.log('연산자 ' + buttonContent + ' 버튼');
-      previousKey = 'operator';
     }
 
     if (action === 'decimal') {
       // console.log('소수점 버튼');
-      previousKey = 'decimal';
     }
 
     if (action === 'clear') {
       console.log('초기화 버튼');
-      previousKey = 'clear';
     }
 
     if (action === 'calculate') {
       console.log('계산 버튼');
-      previousKey = 'calculate';
     }
   }
 });
