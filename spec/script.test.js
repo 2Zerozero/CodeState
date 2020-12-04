@@ -134,6 +134,28 @@ function bare(window, expect) {
       done();
     });
 
+    it('연산 시 script.js의 calculate 함수를 활용해야 합니다.', function (done) {
+      const clicks = ['7', '+', '5', '12'];
+      const expected = ['7', '+', '5', '12']; 
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const operator = window.document.querySelector('.calculator__operator');
+      const secondOperend = window.document.querySelector('.calculator__operator--right');
+      const calculatedResult = window.document.querySelector('.calculator__result');
+      clicks.forEach(function (click) {
+        const button = getButtonBy(click, allButtons);
+        button.dispatchEvent(clickEvent);
+      });
+
+      const result = window.calculate(firstOperend.textContent, operator.textContent, secondOperend.textContent);
+
+      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(operator.textContent).to.be.equal(expected[1]);
+      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(calculatedResult.textContent).to.be.equal(expected[3]);
+      expect(result).to.be.equal(expected[3]);
+      done();
+    });
+
     it('clear 버튼을 눌렀을 때, 화면에 0, +, 0, =, 0 순서로 보여야 합니다.', function (done) {
       const clicks = ['7', '+', '5', '12'];
       const expected = ['7', '+', '5', '12']; 
