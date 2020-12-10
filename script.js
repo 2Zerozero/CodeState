@@ -1,10 +1,10 @@
 const calculator = document.querySelector('.calculator'); // calculator 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
 const buttons = calculator.querySelector('.calculator__buttons'); // calculator__keys 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
 
-const firstOperend = document.querySelector('.calculator__operend--left'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-const operator = document.querySelector('.calculator__operator'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-const secondOperend = document.querySelector('.calculator__operend--right'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-const calculatedResult = document.querySelector('.calculator__result'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const firstOperend = document.querySelector('.calculator__operend--left'); // calculator__operend--left 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const operator = document.querySelector('.calculator__operator'); // calculator__operator 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const secondOperend = document.querySelector('.calculator__operend--right'); // calculator__operend--right 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+const calculatedResult = document.querySelector('.calculator__result'); // calculator__result 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
 
 function calculate(n1, operator, n2) {
   let result = 0;
@@ -36,7 +36,6 @@ buttons.addEventListener('click', function (event) {
   if (target.matches('button')) {
     // TODO : 계산기가 작동할 수 있도록 아래 코드를 수정하세요. 작성되어 있는 조건문과 console.log를 활용하시면 쉽게 문제를 풀 수 있습니다.
     // 클릭된 HTML 엘리먼트가 button이면
-    // TODO : intermediate, advanced 할 수 있는 방법 고민, 깔끔하게 !
     if (action === 'number') {
       // 그리고 버튼의 클레스가 number이면
       // 아래 코드가 작동됩니다.
@@ -45,12 +44,12 @@ buttons.addEventListener('click', function (event) {
       } else {
         firstOperend.textContent = buttonContent;
       }
-      console.log('숫자 ' + buttonContent + ' 버튼');
+      // console.log('숫자 ' + buttonContent + ' 버튼');
     }
 
     if (action === 'operator') {
       operator.textContent = buttonContent;
-      console.log('연산자 ' + buttonContent + ' 버튼');
+      // console.log('연산자 ' + buttonContent + ' 버튼');
     }
 
     if (action === 'decimal') {
@@ -62,17 +61,18 @@ buttons.addEventListener('click', function (event) {
       operator.textContent = '+';
       secondOperend.textContent = '0';
       calculatedResult.textContent = '0';
-      console.log('초기화 버튼');
+      // console.log('초기화 버튼');
     }
 
     if (action === 'calculate') {
       calculatedResult.textContent = calculate(firstOperend.textContent, operator.textContent, secondOperend.textContent);
-      console.log('계산 버튼');
+      // console.log('계산 버튼');
     }
   }
 });
 
-// ! intermediate, advanced test를 위한 코드입니다. 필요 시 주석을 해제하세요.
+
+// ! intermediate, advanced test를 위한 코드입니다. 도전하신다면 주석을 해제하세요.
 const display = document.querySelector('.calculator__display--intermediate'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
 let firstNum, intermediateOperator, previousKey, previousNum;
 
