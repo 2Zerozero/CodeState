@@ -147,13 +147,19 @@ function bare(window, expect) {
         button.dispatchEvent(clickEvent);
       });
 
-      const result = window.calculate(firstOperend.textContent, operator.textContent, secondOperend.textContent);
+      const firstNum = firstOperend.textContent;
+      const operatorContent = operator.textContent;
+      const secondNum = secondOperend.textContent;
+
+      const stringInputResult = window.calculate(firstNum, operatorContent, secondNum);
+      const numberInputResult = window.calculate(Number(firstNum), operatorContent, Number(secondNum));
+      const isPassed = Boolean(stringInputResult === expected[3]) || Boolean(numberInputResult === expected[3]);
 
       expect(firstOperend.textContent).to.be.equal(expected[0]);
       expect(operator.textContent).to.be.equal(expected[1]);
       expect(secondOperend.textContent).to.be.equal(expected[2]);
       expect(calculatedResult.textContent).to.be.equal(expected[3]);
-      expect(result).to.be.equal(expected[3]);
+      expect(isPassed).to.be.true;
       done();
     });
 
@@ -299,11 +305,13 @@ function intermediate(window, expect) {
   describe('calculate 함수를 검사합니다.', function () {
     describe('정수의 연산을 테스트 합니다.', function () {
       const calculateFuncTest = function (testValue) {
-        const { firstNum, displayedNum, result, operator } = testValue;
+        const { firstNum, operator, displayedNum, result } = testValue;
 
         it(`${firstNum}과 ${displayedNum}의 합은 ${result}이여야 합니다.`, function (done) {
-          const actual = window.calculate(firstNum, operator, displayedNum);
-          expect(actual).to.be.equal(result);
+          const stringInputResult = window.calculate(firstNum, operator, displayedNum);
+          const numberInputResult = window.calculate(Number(firstNum), operator, Number(displayedNum));
+          const isPassed = Boolean(stringInputResult === result) || Boolean(numberInputResult === result);
+          expect(isPassed).to.be.true;
           done();
         });
       };
@@ -354,6 +362,12 @@ function intermediate(window, expect) {
   });
 
   describe('계산기의 작동을 테스트 합니다.', function () {
+    const clickEvent = new window.MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+      view: window,
+    });
+
     const getButtonBy = function (text, buttons) {
       const result = buttons.filter(function (button) {
         return button.textContent === text;
@@ -368,12 +382,6 @@ function intermediate(window, expect) {
       return result[0];
     };
 
-    const clickEvent = new window.MouseEvent('click', {
-      bubbles: true,
-      cancelable: true,
-      view: window,
-    });
-
     const numbers = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0'];
     const numberButtons = [...window.document.querySelectorAll('.number')];
     // const operators = ['+', '-', '*', '/'];
@@ -383,64 +391,56 @@ function intermediate(window, expect) {
     const enterButton = window.document.querySelector('.calculate');
     const allButtons = [clearButton, enterButton, decimalButton, ...numberButtons, ...operatorButtons];
 
-    describe('숫자 버튼이 잘 클릭 되는지 테스트 합니다.', function () {
-      afterEach(function () {
-        clearButton.dispatchEvent(clickEvent);
-      });
+    afterEach(function () {
+      clearButton.dispatchEvent(clickEvent);
+    });
 
-      it(`숫자 버튼을 클릭하면 화면에 숫자가 표시되어야 합니다.`, function (done) {
-        numbers.forEach(function (number) {
+    describe('숫자 버튼이 잘 클릭 되는지 테스트 합니다.', function () {
+      numbers.forEach(function (number) {
+        it(`숫자 버튼을 클릭하면 화면에 숫자가 표시되어야 합니다.`, function (done) {
           const button = getButtonBy(number, numberButtons);
           const display = window.document.querySelector('.calculator__display--intermediate');
           display.textContent = '0';
-
           button.dispatchEvent(clickEvent);
+
           expect(display.textContent).to.equal(number);
-        });
-        done();
-      });
-
-      describe('AC 버튼이 잘 클릭 되는지 테스트 합니다.', function () {
-        afterEach(function () {
-          clearButton.dispatchEvent(clickEvent);
-        });
-
-        it(`AC가 표시된 버튼을 클릭하면 초기화가 되어야 합니다.`, function (done) {
-          const display = window.document.querySelector('.calculator__display--intermediate');
-          display.textContent = 'Something strange';
-          const clearButton = window.document.querySelector('.clear');
-          clearButton.dispatchEvent(clickEvent);
-
-          expect(display.textContent).to.equal('0');
           done();
         });
       });
+    });
 
-      describe('기본적인 계산기의 기능을 검사합니다.', function () {
-        afterEach(function () {
-          clearButton.dispatchEvent(clickEvent);
-        });
+    describe('AC 버튼이 잘 클릭 되는지 테스트 합니다.', function () {
+      it(`AC가 표시된 버튼을 클릭하면 초기화가 되어야 합니다.`, function (done) {
+        const display = window.document.querySelector('.calculator__display--intermediate');
+        display.textContent = 'Something strange';
+        const clearButton = window.document.querySelector('.clear');
+        clearButton.dispatchEvent(clickEvent);
 
-        const bareRequirementTests = [
-          ['1', '1', '+', '1', 'Enter', '12'],
-          ['1', '1', '-', '1', 'Enter', '10'],
-          ['1', '5', '*', '4', 'Enter', '60'],
-          ['9', '0', '/', '3', 'Enter', '30'],
-          ['0', '+', '0', 'Enter', '0'],
-        ];
+        expect(display.textContent).to.equal('0');
+        done();
+      });
+    });
 
-        bareRequirementTests.forEach(function (test) {
-          const clicks = test.slice(0, -1);
-          const expected = test.slice(-1)[0];
-          it(`${clicks}를 연속으로 누르면 ${expected}이(가) 화면에 표시되어야 합니다.`, function (done) {
-            const display = window.document.querySelector('.calculator__display--intermediate');
-            clicks.forEach(function (click) {
-              const button = getButtonBy(click, allButtons);
-              button.dispatchEvent(clickEvent);
-            });
-            expect(display.textContent).to.equal(expected);
-            done();
+    describe('기본적인 계산기의 기능을 검사합니다.', function () {
+      const bareRequirementTests = [
+        ['1', '1', '+', '1', 'Enter', '12'],
+        ['1', '1', '-', '1', 'Enter', '10'],
+        ['1', '5', '*', '4', 'Enter', '60'],
+        ['9', '0', '/', '3', 'Enter', '30'],
+        ['0', '+', '0', 'Enter', '0'],
+      ];
+
+      bareRequirementTests.forEach(function (test) {
+        const clicks = test.slice(0, -1);
+        const expected = test.slice(-1)[0];
+        it(`${clicks}를 연속으로 누르면 ${expected}이(가) 화면에 표시되어야 합니다.`, function (done) {
+          const display = window.document.querySelector('.calculator__display--intermediate');
+          clicks.forEach(function (click) {
+            const button = getButtonBy(click, allButtons);
+            button.dispatchEvent(clickEvent);
           });
+          expect(display.textContent).to.equal(expected);
+          done();
         });
       });
     });
@@ -451,11 +451,13 @@ function advanced(window, expect) {
   describe('calculate 함수를 검사합니다.', function () {
     describe('실수 연산을 테스트 합니다.', function () {
       const calculateFuncTest = function (testValue) {
-        const { firstNum, displayedNum, result, operator } = testValue;
+        const { firstNum, operator, displayedNum, result } = testValue;
 
         it(`${firstNum}과 ${displayedNum}의 합은 ${result}이여야 합니다.`, function (done) {
-          const actual = window.calculate(firstNum, operator, displayedNum);
-          expect(actual).to.be.equal(result);
+          const stringInputResult = window.calculate(firstNum, operator, displayedNum);
+          const numberInputResult = window.calculate(Number(firstNum), operator, Number(displayedNum));
+          const isPassed = Boolean(stringInputResult === result) || Boolean(numberInputResult === result);
+          expect(isPassed).to.be.true;
           done();
         });
       };
@@ -525,11 +527,11 @@ function advanced(window, expect) {
     const enterButton = window.document.querySelector('.calculate');
     const allButtons = [clearButton, enterButton, decimalButton, ...numberButtons, ...operatorButtons];
 
-    describe('혹시 발생할 수 있는 특이한 작동 시 기능을 검사합니다.', function () {
-      afterEach(function () {
-        clearButton.dispatchEvent(clickEvent);
-      });
+    afterEach(function () {
+      clearButton.dispatchEvent(clickEvent);
+    });
 
+    describe('혹시 발생할 수 있는 특이한 작동 시 기능을 검사합니다.', function () {
       const consecutiveEnterTests = [
         ['3', '*', '3', 'Enter', 'Enter', 'Enter', 'Enter', '243'],
         ['3', '-', '3', 'Enter', 'Enter', 'Enter', 'Enter', '-9'],
@@ -576,47 +578,8 @@ function advanced(window, expect) {
         ['1', '0', '0', '*', '.', '.', '5', 'Enter', '50'],
       ];
 
-      const complicateConsecutiveCalculationTests = [
-        // eslint-disable-next-line prettier/prettier
-        [
-          '1',
-          '0',
-          '0',
-          '.',
-          '.',
-          '1',
-          '2',
-          '5',
-          '2',
-          '+',
-          '1',
-          '2',
-          '+',
-          '1',
-          '5',
-          '-',
-          '-',
-          '2',
-          '3',
-          '-',
-          '1',
-          '4',
-          '4',
-          '2',
-          '/',
-          '2',
-          '3',
-          '/',
-          '/',
-          '1',
-          '2',
-          '*',
-          '2',
-          '3',
-          'Enter',
-          '-111.48956666666668',
-        ],
-      ];
+      // eslint-disable-next-line prettier/prettier
+      const complicateConsecutiveCalculationTests = [['1', '0', '0', '.', '.', '1', '2', '5', '2', '+', '1', '2', '+', '1', '5', '-', '-', '2', '3', '-', '1', '4', '4', '2', '/', '2', '3', '/', '/', '1', '2', '*', '2', '3', 'Enter', '-111.48956666666668']];
 
       const advancedTests = [
         ...consecutiveEnterTests,
