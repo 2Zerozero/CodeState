@@ -1,9 +1,13 @@
 {
-  "name": "sw-sprints-js-cal",
+  "name": "pre-sprint-calculator",
   "version": "1.0.0",
   "main": "script.js",
   "author": "Hong Shik Branden Kim <kimploo@gmail.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codestates/pre-sprint-calculator"
+  },
   "scripts": {
     "test": "mocha spec/script.test.js",
     "report": "mocha spec/script.test.js --timeout 50000 --exit --sort --reporter @mochajs/json-file-reporter",
