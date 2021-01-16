@@ -31,12 +31,12 @@ function test(window, expect) {
     bare(window, expect);
   });
   // ! Intermediate test와 Advanced test를 위해서는 아래 주석을 해제하세요.
-  // describe('Intermediate test', function () {
-  //   intermediate(window, expect);
-  // });
-  // describe('Advanced Challenge test', function () {
-  //   advanced(window, expect);
-  // });
+  describe('Intermediate test', function () {
+    intermediate(window, expect);
+  });
+  describe('Advanced Challenge test', function () {
+    advanced(window, expect);
+  });
 }
 
 function bare(window, expect) {
