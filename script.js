@@ -49,25 +49,26 @@ buttons.addEventListener('click', function (event) {
 });
 
 
-// ! intermediate, advanced test를 위한 코드입니다. 도전하신다면 주석을 해제하세요.
-// const display = document.querySelector('.calculator__display--intermediate'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-// let firstNum, intermediateOperator, previousKey, previousNum;
+// ! Advanced Challenge test와 Nightmare test를 위해서는 아래 주석을 해제하세요.
 
-// buttons.addEventListener('click', function (event) {
-//   // 버튼을 눌렀을 때 작동하는 함수입니다.
+const display = document.querySelector('.calculator__display--for-advanced'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+let firstNum, operatorForAdvanced, previousKey, previousNum;
 
-//   const target = event.target; // 클릭된 HTML 엘리먼트의 정보가 저장되어 있습니다.
-//   const action = target.classList[0]; // 클릭된 HTML 엘리먼트에 클레스 정보를 가져옵니다.
-//   const buttonContent = target.textContent; // 클릭된 HTML 엘리먼트의 텍스트 정보를 가져옵니다.
-//   // ! 위 코드는 수정하지 마세요.
+buttons.addEventListener('click', function (event) {
+  // 버튼을 눌렀을 때 작동하는 함수입니다.
 
-//   // ! 여기서부터 intermetiate & advanced 과제룰 풀어주세요.
-//   if (target.matches('button')) {
-//     if (action === 'number') {}
-//     if (action === 'operator') {}
-//     if (action === 'decimal') {}
-//     if (action === 'clear') {}
-//     if (action === 'calculate') {}
-//   }
+  const target = event.target; // 클릭된 HTML 엘리먼트의 정보가 저장되어 있습니다.
+  const action = target.classList[0]; // 클릭된 HTML 엘리먼트에 클레스 정보를 가져옵니다.
+  const buttonContent = target.textContent; // 클릭된 HTML 엘리먼트의 텍스트 정보를 가져옵니다.
+  // ! 위 코드는 수정하지 마세요.
 
-// });
+  // ! 여기서부터 Advanced Challenge & Nightmare 과제룰 풀어주세요.
+  if (target.matches('button')) {
+    if (action === 'number') {}
+    if (action === 'operator') {}
+    if (action === 'decimal') {}
+    if (action === 'clear') {}
+    if (action === 'calculate') {}
+  }
+
+});

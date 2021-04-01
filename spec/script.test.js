@@ -30,12 +30,12 @@ function test(window, expect) {
   describe('bare minimum test', function () {
     bare(window, expect);
   });
-  // ! Intermediate test와 Advanced test를 위해서는 아래 주석을 해제하세요.
-  // describe('Intermediate test', function () {
-  //   intermediate(window, expect);
-  // });
+  // ! Advanced Challenge test와 Nightmare test를 위해서는 아래 주석을 해제하세요.
   // describe('Advanced Challenge test', function () {
   //   advanced(window, expect);
+  // });
+  // describe('Nightmare test', function () {
+  //   nightmare(window, expect);
   // });
 }
 
@@ -73,6 +73,19 @@ function bare(window, expect) {
     const clearButton = window.document.querySelector('.clear');
     const enterButton = window.document.querySelector('.calculate');
     const allButtons = [clearButton, enterButton, decimalButton, ...numberButtons, ...operatorButtons];
+
+    it('clear 버튼을 눌렀을 때, 화면에 0, +, 0, =, 0 순서로 보여야 합니다.', function (done) {
+      const clearButton = window.document.querySelector('.clear');
+      clearButton.dispatchEvent(clickEvent);
+
+      expect(firstOperend.textContent).to.be.equal('0');
+      expect(operator.textContent).to.be.equal('+');
+      expect(secondOperend.textContent).to.be.equal('0');
+      expect(calculatedResult.textContent).to.be.equal('0');
+
+      done();
+    });
+
 
     it('처음 숫자 버튼을 눌렀을 때, 첫 번째 화면에 누른 숫자가 보여야 합니다.', function (done) {
       const test = ['7', '7'];
@@ -194,8 +207,8 @@ function bare(window, expect) {
   });
 }
 
-function intermediate(window, expect) {
-  describe('유어클레스 intermediate 레슨의 예를 통과합니다.', function () {
+function advanced(window, expect) {
+  describe('유어클레스 Advanced Challenge 레슨의 예를 통과합니다.', function () {
     afterEach(function () {
       clearButton.dispatchEvent(clickEvent);
     });
@@ -234,7 +247,7 @@ function intermediate(window, expect) {
         const test = ['7', '7'];
         const clicks = test.slice(0, -1);
         const expected = test.slice(-1)[0];
-        const display = window.document.querySelector('.calculator__display--intermediate');
+        const display = window.document.querySelector('.calculator__display--for-advanced');
         clicks.forEach(function (click) {
           const button = getButtonBy(click, allButtons);
           button.dispatchEvent(clickEvent);
@@ -247,7 +260,7 @@ function intermediate(window, expect) {
         const test = ['7', '0', '0', '0', '7000'];
         const clicks = test.slice(0, -1);
         const expected = test.slice(-1)[0];
-        const display = window.document.querySelector('.calculator__display--intermediate');
+        const display = window.document.querySelector('.calculator__display--for-advanced');
         clicks.forEach(function (click) {
           const button = getButtonBy(click, allButtons);
           button.dispatchEvent(clickEvent);
@@ -262,7 +275,7 @@ function intermediate(window, expect) {
         const test = ['7', '0', '0', '0', '*', '7000'];
         const clicks = test.slice(0, -1);
         const expected = test.slice(-1)[0];
-        const display = window.document.querySelector('.calculator__display--intermediate');
+        const display = window.document.querySelector('.calculator__display--for-advanced');
         clicks.forEach(function (click) {
           const button = getButtonBy(click, allButtons);
           button.dispatchEvent(clickEvent);
@@ -275,7 +288,7 @@ function intermediate(window, expect) {
         const test = ['7', '0', '0', '0', '*', '6', 'Enter', '42000'];
         const clicks = test.slice(0, -1);
         const expected = test.slice(-1)[0];
-        const display = window.document.querySelector('.calculator__display--intermediate');
+        const display = window.document.querySelector('.calculator__display--for-advanced');
         clicks.forEach(function (click) {
           const button = getButtonBy(click, allButtons);
           button.dispatchEvent(clickEvent);
@@ -290,7 +303,7 @@ function intermediate(window, expect) {
         });
 
         it(`AC가 표시된 버튼을 클릭하면 초기화가 되어야 합니다.`, function (done) {
-          const display = window.document.querySelector('.calculator__display--intermediate');
+          const display = window.document.querySelector('.calculator__display--for-advanced');
           display.textContent = 'Something strange';
           const clearButton = window.document.querySelector('.clear');
           clearButton.dispatchEvent(clickEvent);
@@ -399,7 +412,7 @@ function intermediate(window, expect) {
       numbers.forEach(function (number) {
         it(`숫자 버튼을 클릭하면 화면에 숫자가 표시되어야 합니다.`, function (done) {
           const button = getButtonBy(number, numberButtons);
-          const display = window.document.querySelector('.calculator__display--intermediate');
+          const display = window.document.querySelector('.calculator__display--for-advanced');
           display.textContent = '0';
           button.dispatchEvent(clickEvent);
 
@@ -411,7 +424,7 @@ function intermediate(window, expect) {
 
     describe('AC 버튼이 잘 클릭 되는지 테스트 합니다.', function () {
       it(`AC가 표시된 버튼을 클릭하면 초기화가 되어야 합니다.`, function (done) {
-        const display = window.document.querySelector('.calculator__display--intermediate');
+        const display = window.document.querySelector('.calculator__display--for-advanced');
         display.textContent = 'Something strange';
         const clearButton = window.document.querySelector('.clear');
         clearButton.dispatchEvent(clickEvent);
@@ -434,7 +447,7 @@ function intermediate(window, expect) {
         const clicks = test.slice(0, -1);
         const expected = test.slice(-1)[0];
         it(`${clicks}를 연속으로 누르면 ${expected}이(가) 화면에 표시되어야 합니다.`, function (done) {
-          const display = window.document.querySelector('.calculator__display--intermediate');
+          const display = window.document.querySelector('.calculator__display--for-advanced');
           clicks.forEach(function (click) {
             const button = getButtonBy(click, allButtons);
             button.dispatchEvent(clickEvent);
@@ -447,7 +460,7 @@ function intermediate(window, expect) {
   });
 }
 
-function advanced(window, expect) {
+function nightmare(window, expect) {
   describe('calculate 함수를 검사합니다.', function () {
     describe('실수 연산을 테스트 합니다.', function () {
       const calculateFuncTest = function (testValue) {
@@ -594,7 +607,7 @@ function advanced(window, expect) {
         const clicks = test.slice(0, -1);
         const displayedResult = test.slice(-1)[0];
         it(`${clicks}를 연속으로 누르면 ${displayedResult}이(가) 화면에 표시되어야 합니다.`, function (done) {
-          const display = window.document.querySelector('.calculator__display--intermediate');
+          const display = window.document.querySelector('.calculator__display--for-advanced');
           clicks.forEach(function (click) {
             const button = getButtonBy(click, allButtons);
             button.dispatchEvent(clickEvent);
