@@ -76,6 +76,10 @@ function bare(window, expect) {
 
     it('clear 버튼을 눌렀을 때, 화면에 0, +, 0, =, 0 순서로 보여야 합니다.', function (done) {
       const clearButton = window.document.querySelector('.clear');
+      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const operator = window.document.querySelector('.calculator__operator');
+      const secondOperend = window.document.querySelector('.calculator__operend--right');
+      const calculatedResult = window.document.querySelector('.calculator__result');
       clearButton.dispatchEvent(clickEvent);
 
       expect(firstOperend.textContent).to.be.equal('0');
