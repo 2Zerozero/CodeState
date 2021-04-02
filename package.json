@@ -1,12 +1,12 @@
 {
-  "name": "pre-sprint-calculator",
+  "name": "im-sprint-calculator",
   "version": "1.0.0",
   "main": "script.js",
   "author": "Hong Shik Branden Kim <kimploo@gmail.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codestates/pre-sprint-calculator"
+    "url": "git+https://github.com/codestates/im-sprint-calculator"
   },
   "scripts": {
     "test": "mocha spec/script.test.js",
