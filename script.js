@@ -105,11 +105,11 @@ buttons.addEventListener('click', function (event) {
 
     if (action === 'operator') {
       target.classList.add('isPressed');
-      if (firstNum && intermediateOperator && previousKey !== 'operator' && previousKey !== 'calculate') {
-        display.textContent = calculate(firstNum, intermediateOperator, display.textContent);
+      if (firstNum && operatorForAdvanced && previousKey !== 'operator' && previousKey !== 'calculate') {
+        display.textContent = calculate(firstNum, operatorForAdvanced, display.textContent);
       }
       firstNum = display.textContent;
-      intermediateOperator = buttonContent;
+      operatorForAdvanced = buttonContent;
       previousKey = 'operator';
     }
 
@@ -124,7 +124,7 @@ buttons.addEventListener('click', function (event) {
 
     if (action === 'clear') {
       firstNum = undefined;
-      intermediateOperator = undefined;
+      operatorForAdvanced = undefined;
       previousNum = undefined;
       previousKey = 'clear';
       display.textContent = '0';
@@ -133,10 +133,10 @@ buttons.addEventListener('click', function (event) {
     if (action === 'calculate') {
       if (firstNum) {
         if (previousKey === 'calculate') {
-          display.textContent = calculate(display.textContent, intermediateOperator, previousNum);
+          display.textContent = calculate(display.textContent, operatorForAdvanced, previousNum);
         } else {
           previousNum = display.textContent;
-          display.textContent = calculate(firstNum, intermediateOperator, display.textContent);
+          display.textContent = calculate(firstNum, operatorForAdvanced, display.textContent);
         }
       }
       previousKey = 'calculate';
