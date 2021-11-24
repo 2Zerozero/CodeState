@@ -1,5 +1,5 @@
-var newsURL = 'http://localhost:5000/data/latestNews';
-var weatherURL = 'http://localhost:5000/data/weather';
+var newsURL = 'http://localhost:4999/data/latestNews';
+var weatherURL = 'http://localhost:4999/data/weather';
 
 function getNewsAndWeatherAll() {
   return Promise.all([
