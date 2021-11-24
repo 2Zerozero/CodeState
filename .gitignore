@@ -1,3 +1,7 @@
+.prettierrc
+package-lock.json
+report.jest.json
+
 # Floobits
 .floo
 .floobit
@@ -130,3 +134,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+

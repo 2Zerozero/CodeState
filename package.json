@@ -1,24 +1,28 @@
 {
-  "name": "sprint-promise",
+  "name": "async-and-promise",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "sinon": "^9.0.3",
+    "supertest": "^4.0.2"
   },
   "scripts": {
-    "test:part-2": "jest part-2/__test__/**.test.js",
+    "test:part-2": "jest --runInBand part-2/__test__/**.test.js",
     "server:part-3": "node part-3/__test__/app.js",
-    "submit": "node .travis/submit.js"
+    "report": "jest --runInBand part-2/__test__/**.test.js --json --outputFile=report.jest.json",
+    "submit": "npx codestates-submission"
   },
   "jest": {
-    "testSequencer": "./testSequencer.js"
+    "testSequencer": "./testSequencer.js",
+    "testTimeout": 2000
   },
-  "author": "",
+  "author": "codestates",
   "license": "ISC",
   "dependencies": {
+    "@codestates-cc/submission-npm": "^1.1.2",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "supertest": "^4.0.2"
+    "express": "^4.17.1"
   }
 }
