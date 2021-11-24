@@ -1,14 +1,6 @@
 const fs = require('fs');
 const { readAllUsersChaining } = require('../03_basicChaining');
-const sinon = require('sinon');
-sinon.spy(Promise, 'all');
-sinon.spy(fs, 'readFile');
-sinon.spy(fs, 'readFileSync');
-beforeEach(function () {
-  Promise.all.resetHistory();
-  fs.readFile.resetHistory();
-  fs.readFileSync.resetHistory();
-});
+const sandbox = require("sinon").createSandbox();
 
 // delete comments
 const MULTI_LINES_COMMENT = /\/\*[\s\S]*?\*\/(\r?\n|\r)/;
@@ -19,7 +11,15 @@ const COMMENT = new RegExp(
 );
 const funcBody = readAllUsersChaining.toString().replace(COMMENT, '');
 
+sandbox.spy(Promise, 'all')
+sandbox.spy(fs, 'readFile');
+sandbox.spy(fs, 'readFileSync');
+
 describe('Basic chaining Test', () => {
+  beforeEach(function () {
+    sandbox.resetHistory();
+  });
+
   describe('readAllUsersChaining', () => {
     test('체이닝의 결과가 Promise 형태로 리턴되어야 합니다', () => {
       const result = readAllUsersChaining();
@@ -53,15 +53,14 @@ describe('Basic chaining Test', () => {
         .catch(done);
     });
 
-    test('fs module을 직접 사용하지 말고, getDataFromFilePromise을 두 번 사용해야 합니다', () => {
-      let matched = funcBody.match(/getDataFromFilePromise\(.+?\)/g) || [];
-      expect(matched.length).toBe(2);
-
-      matched =
-        funcBody.match(
-          /fs\.readFile(Sync)?|fs\[(\'|\")readFile(Sync)?(\'|\")\]/g
-        ) || [];
-      expect(matched.length).toBe(0);
+    test('fs module을 직접 사용하지 말고, getDataFromFilePromise을 두 번 사용해야 합니다', (done) => {
+      readAllUsersChaining().then(() => {
+        let matched = funcBody.match(/getDataFromFilePromise\(.+?\)/g) || [];
+        expect(matched.length).toBe(2);
+        expect(fs.readFile.called).toBe(false);
+        expect(fs.readFileSync.called).toBe(false);
+        done();
+      })
     });
 
     it('Promise.all 또는 async/await을 사용하지 않고 풀어보세요', (done) => {

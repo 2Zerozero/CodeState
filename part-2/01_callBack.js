@@ -1,11 +1,11 @@
-const fs = require("fs");
+const { readFile } = require("fs");
 
 const getDataFromFile = function (filePath, callback) {
-  fs.readFile(filePath, "utf8", function (err, file) {
+  readFile(filePath, "utf8", function (err, text) {
     if (err) {
       callback(err, null);
     } else {
-      callback(null, file.toString());
+      callback(null, text);
     }
   });
 };

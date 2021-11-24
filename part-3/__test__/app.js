@@ -16,11 +16,7 @@ app.get('/data/latestNews', async (req, res) => {
 });
 
 app.get('/data/weather', async (req, res) => {
-<<<<<<< HEAD
-  res.status(200).json({ "status": "sunny", "tempature": "28", "finedust": "good" });
-=======
   res.status(200).json({ "status": "sunny", "temperature": "28", "fineDust": "good" });
->>>>>>> master
 });
 
 const server = app.listen(5000);
