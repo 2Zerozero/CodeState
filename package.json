@@ -15,6 +15,9 @@
     "submit": "npx codestates-submission"
   },
   "jest": {
+    "reporters": ["default",
+      ["../pass-trail/index.js",{"project_id": "1"}]
+    ],
     "testSequencer": "./testSequencer.js",
     "testTimeout": 2000
   },
