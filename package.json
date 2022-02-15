@@ -16,7 +16,7 @@
   },
   "jest": {
     "reporters": ["default",
-      ["../pass-trail/index.js",{"project_id": "1"}]
+      ["../assignment-manager/imposter-reporter/index.js",{"project_id": "1"}]
     ],
     "testSequencer": "./testSequencer.js",
     "testTimeout": 2000
