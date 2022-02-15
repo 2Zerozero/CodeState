@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
+    "codestates-assignment-manager": "^1.2.0",
     "jest": "^24.9.0",
     "sinon": "^9.0.3",
     "supertest": "^4.0.2"
@@ -12,11 +13,17 @@
     "test:part-2": "jest --runInBand part-2/__test__/**.test.js",
     "server:part-3": "node part-3/__test__/app.js",
     "report": "jest --runInBand part-2/__test__/**.test.js --json --outputFile=report.jest.json",
-    "submit": "npx codestates-submission"
+    "submit": "codestates"
   },
   "jest": {
-    "reporters": ["default",
-      ["../assignment-manager/imposter-reporter/index.js",{"project_id": "1"}]
+    "reporters": [
+      "default",
+      [
+        "./node_modules/codestates-assignment-manager/imposter-reporter/index.js",
+        {
+          "project_id": "async-and-promise"
+        }
+      ]
     ],
     "testSequencer": "./testSequencer.js",
     "testTimeout": 2000
@@ -24,7 +31,6 @@
   "author": "codestates",
   "license": "ISC",
   "dependencies": {
-    "@codestates-cc/submission-npm": "^1.1.2",
     "cors": "^2.8.5",
     "express": "^4.17.1"
   }
