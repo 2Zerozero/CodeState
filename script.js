@@ -72,13 +72,12 @@ buttons.addEventListener('click', function (event) {
 });
 
 
-// ! intermediate, advanced test를 위한 코드입니다. 도전하신다면 주석을 해제하세요.
-const display = document.querySelector('.calculator__display--intermediate'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
-let firstNum, intermediateOperator, previousKey, previousNum;
+// ! Advanced Challenges, Nightmare를 위한 코드입니다. 도전하신다면 주석을 해제하세요.
+const display = document.querySelector('.calculator__display--for-advanced'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
+let firstNum, operatorForAdvanced, previousKey, previousNum;
 
 buttons.addEventListener('click', function (event) {
   // 버튼을 눌렀을 때 작동하는 함수입니다.
-  // ! 여기서부터 intermetiate & advanced 과제룰 풀어주세요.
 
   const target = event.target; // 클릭된 HTML 엘리먼트의 정보가 저장되어 있습니다.
   const action = target.classList[0]; // 클릭된 HTML 엘리먼트에 클레스 정보를 가져옵니다.
