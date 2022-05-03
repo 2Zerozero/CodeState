@@ -30,12 +30,12 @@ function test(window, expect) {
   describe('bare minimum test', function () {
     bare(window, expect);
   });
-  // ! Intermediate test와 Advanced test를 위해서는 아래 주석을 해제하세요.
-  describe('Intermediate test', function () {
-    intermediate(window, expect);
-  });
+  // ! Advanced Challenge test와 Nightmare test를 위해서는 아래 주석을 해제하세요.
   describe('Advanced Challenge test', function () {
     advanced(window, expect);
+  });
+  describe('Nightmare test', function () {
+    nightmare(window, expect);
   });
 }
 
