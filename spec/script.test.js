@@ -76,15 +76,15 @@ function bare(window, expect) {
 
     it('clear 버튼을 눌렀을 때, 화면에 0, +, 0, =, 0 순서로 보여야 합니다.', function (done) {
       const clearButton = window.document.querySelector('.clear');
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       const operator = window.document.querySelector('.calculator__operator');
-      const secondOperend = window.document.querySelector('.calculator__operend--right');
+      const secondOperand = window.document.querySelector('.calculator__operend--right');
       const calculatedResult = window.document.querySelector('.calculator__result');
       clearButton.dispatchEvent(clickEvent);
 
-      expect(firstOperend.textContent).to.be.equal('0');
+      expect(firstOperand.textContent).to.be.equal('0');
       expect(operator.textContent).to.be.equal('+');
-      expect(secondOperend.textContent).to.be.equal('0');
+      expect(secondOperand.textContent).to.be.equal('0');
       expect(calculatedResult.textContent).to.be.equal('0');
 
       done();
@@ -95,25 +95,25 @@ function bare(window, expect) {
       const test = ['7', '7'];
       const clicks = test.slice(0, -1);
       const expected = test.slice(-1)[0];
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       clicks.forEach(function (click) {
         const button = getButtonBy(click, allButtons);
         button.dispatchEvent(clickEvent);
       });
-      expect(firstOperend.textContent).to.equal(expected);
+      expect(firstOperand.textContent).to.equal(expected);
       done();
     });
 
     it('숫자 버튼과 연산자 버튼을 눌렀을 때, 첫 번째 화면는 숫자, 두 번째 화면에는 연산자가 보여야 합니다.', function (done) {
       const clicks = ['7', '+'];
       const expected = ['7', '+'];
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       const operator = window.document.querySelector('.calculator__operator');
       clicks.forEach(function (click) {
         const button = getButtonBy(click, allButtons);
         button.dispatchEvent(clickEvent);
       });
-      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(firstOperand.textContent).to.be.equal(expected[0]);
       expect(operator.textContent).to.be.equal(expected[1]);
       done();
     });
@@ -121,33 +121,33 @@ function bare(window, expect) {
     it('숫자 버튼, 연산자 버튼, 숫자 버튼을 눌렀을 때, 화면에 숫자, 연산자, 순자의 순서로 보여야 합니다.', function (done) {
       const clicks = ['7', '+', '5'];
       const expected = ['7', '+', '5'];
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       const operator = window.document.querySelector('.calculator__operator');
-      const secondOperend = window.document.querySelector('.calculator__operend--right');
+      const secondOperand = window.document.querySelector('.calculator__operend--right');
       clicks.forEach(function (click) {
         const button = getButtonBy(click, allButtons);
         button.dispatchEvent(clickEvent);
       });
-      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(firstOperand.textContent).to.be.equal(expected[0]);
       expect(operator.textContent).to.be.equal(expected[1]);
-      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(secondOperand.textContent).to.be.equal(expected[2]);
       done();
     });
 
     it('숫자 버튼, 연산자 버튼, 숫자 버튼, 엔터 버튼을 눌렀을 때, 화면에 숫자, 연산자, 숫자, =, 연산 결과의 순서로 보여야 합니다.', function (done) {
       const clicks = ['7', '+', '5', 'Enter'];
       const expected = ['7', '+', '5', '12'];
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       const operator = window.document.querySelector('.calculator__operator');
-      const secondOperend = window.document.querySelector('.calculator__operend--right');
+      const secondOperand = window.document.querySelector('.calculator__operend--right');
       const calculatedResult = window.document.querySelector('.calculator__result');
       clicks.forEach(function (click) {
         const button = getButtonBy(click, allButtons);
         button.dispatchEvent(clickEvent);
       });
-      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(firstOperand.textContent).to.be.equal(expected[0]);
       expect(operator.textContent).to.be.equal(expected[1]);
-      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(secondOperand.textContent).to.be.equal(expected[2]);
       expect(calculatedResult.textContent).to.be.equal(expected[3]);
       done();
     });
@@ -155,26 +155,26 @@ function bare(window, expect) {
     it('연산 시 script.js의 calculate 함수를 활용해야 합니다.', function (done) {
       const clicks = ['7', '+', '5', 'Enter'];
       const expected = ['7', '+', '5', '12'];
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       const operator = window.document.querySelector('.calculator__operator');
-      const secondOperend = window.document.querySelector('.calculator__operend--right');
+      const secondOperand = window.document.querySelector('.calculator__operend--right');
       const calculatedResult = window.document.querySelector('.calculator__result');
       clicks.forEach(function (click) {
         const button = getButtonBy(click, allButtons);
         button.dispatchEvent(clickEvent);
       });
 
-      const firstNum = firstOperend.textContent;
+      const firstNum = firstOperand.textContent;
       const operatorContent = operator.textContent;
-      const secondNum = secondOperend.textContent;
+      const secondNum = secondOperand.textContent;
 
       const stringInputResult = window.calculate(firstNum, operatorContent, secondNum);
       const numberInputResult = window.calculate(Number(firstNum), operatorContent, Number(secondNum));
       const isPassed = Boolean(stringInputResult === expected[3]) || Boolean(numberInputResult === expected[3]);
 
-      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(firstOperand.textContent).to.be.equal(expected[0]);
       expect(operator.textContent).to.be.equal(expected[1]);
-      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(secondOperand.textContent).to.be.equal(expected[2]);
       expect(calculatedResult.textContent).to.be.equal(expected[3]);
       expect(isPassed).to.be.true;
       done();
@@ -183,9 +183,9 @@ function bare(window, expect) {
     it('clear 버튼을 눌렀을 때, 화면에 0, +, 0, =, 0 순서로 보여야 합니다.', function (done) {
       const clicks = ['7', '+', '5', 'Enter'];
       const expected = ['7', '+', '5', '12'];
-      const firstOperend = window.document.querySelector('.calculator__operend--left');
+      const firstOperand = window.document.querySelector('.calculator__operend--left');
       const operator = window.document.querySelector('.calculator__operator');
-      const secondOperend = window.document.querySelector('.calculator__operend--right');
+      const secondOperand = window.document.querySelector('.calculator__operend--right');
       const calculatedResult = window.document.querySelector('.calculator__result');
 
       clicks.forEach(function (click) {
@@ -193,17 +193,17 @@ function bare(window, expect) {
         button.dispatchEvent(clickEvent);
       });
 
-      expect(firstOperend.textContent).to.be.equal(expected[0]);
+      expect(firstOperand.textContent).to.be.equal(expected[0]);
       expect(operator.textContent).to.be.equal(expected[1]);
-      expect(secondOperend.textContent).to.be.equal(expected[2]);
+      expect(secondOperand.textContent).to.be.equal(expected[2]);
       expect(calculatedResult.textContent).to.be.equal(expected[3]);
 
       const clearButton = window.document.querySelector('.clear');
       clearButton.dispatchEvent(clickEvent);
 
-      expect(firstOperend.textContent).to.be.equal('0');
+      expect(firstOperand.textContent).to.be.equal('0');
       expect(operator.textContent).to.be.equal('+');
-      expect(secondOperend.textContent).to.be.equal('0');
+      expect(secondOperand.textContent).to.be.equal('0');
       expect(calculatedResult.textContent).to.be.equal('0');
 
       done();
