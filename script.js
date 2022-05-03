@@ -72,8 +72,7 @@ buttons.addEventListener('click', function (event) {
 });
 
 
-// ! Advanced Challenge test와 Nightmare test를 위해서는 아래 주석을 해제하세요.
-
+// ! Advanced Challenges, Nightmare를 위한 코드입니다. 도전하신다면 주석을 해제하세요.
 const display = document.querySelector('.calculator__display--for-advanced'); // calculator__display 엘리먼트와, 그 자식 엘리먼트의 정보를 모두 담고 있습니다.
 let firstNum, operatorForAdvanced, previousKey, previousNum;
 
