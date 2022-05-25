@@ -1,24 +1,37 @@
 {
-  "name": "promises",
+  "name": "fe-sprint-async-and-promise",
   "version": "1.0.0",
-  "description": "Conjure your way through an understanding of Promises",
-  "license": "UNLICENSED",
-  "private": true,
-  "engines": {
-    "node": ">=4.0.0"
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "codestates-assignment-manager": "^1.8.0",
+    "jest": "^24.9.0",
+    "sinon": "^9.0.3",
+    "supertest": "^4.0.2"
   },
   "scripts": {
-    "postinstall": "curl -s https://raw.githubusercontent.com/codestates/pomander/master/bin/install | bash",
-    "test": "mocha test/index.js --bail",
-    "lint": "eslint ./"
+    "test:part-2": "jest --runInBand part-2/__test__/**.test.js",
+    "server:part-3": "node part-3/__test__/app.js",
+    "report": "jest --runInBand part-2/__test__/**.test.js --json --outputFile=report.jest.json",
+    "submit": "codestates"
   },
+  "jest": {
+    "testSequencer": "./testSequencer.js",
+    "testTimeout": 2000,
+    "reporters": [
+      "default",
+      [
+        "./node_modules/codestates-assignment-manager/imposter-reporter/index.js",
+        {
+          "project_id": "async-and-promise"
+        }
+      ]
+    ]
+  },
+  "author": "codestates",
+  "license": "ISC",
   "dependencies": {
-    "bluebird": "^3.3.4",
-    "chai": "^3.2.0",
-    "colors": "^1.1.2",
-    "eslint-config-codestates": "^1.0.0",
-    "mocha": "^2.2.5",
-    "nock": "^2.15.0",
-    "request": "^2.61.0"
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   }
 }

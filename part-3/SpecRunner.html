@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/9.0.3/mocha.min.css" integrity="sha512-6RWs5FczsXwODIZJoL0szz3bXX5W+q/m7bFVQ7HSwZbBXd7PpyYrg2f9Dr4Y2Guqi5k4NJsemxXuiiFoI8fQ4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/9.0.3/mocha.min.js" integrity="sha512-r4fa9GW4K2tLEWDXoPglLzQxCj2gd9j01XPKckImNPhbkoLbMtchdCEQDFFzkj9rdOZ33TYzZIwMUJtgpvPmqQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.3.4/chai.min.js" integrity="sha512-gkZWobgJrQevN2HMEeTnSlxWPJ3HS0JJ3nXcgI6XLK/NI0z59jbztRZqbTlIzfl21vIGahQaeW0knwH1az/tbg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sinon.js/10.0.1/sinon.min.js" integrity="sha512-pNdrcn83nlZaY1zDLGVtHH2Baxe86kDMqspVOChVjxN71s6DZtcZVqyHXofexm/d8K/1qbJfNUGku3wHIbjSpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <style>
+      .title {
+        margin: 30px 60px 0;
+        font-weight: 500;
+      }
+
+      .callout {
+        padding: 20px;
+        margin: 30px 60px 0;
+        font-size: 0.9rem;
+        background-color: #eee;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1 class="title">Promise Part III</h1>
+    <div class="callout">
+      제대로 작성한 것 같으나, 테스트가 통과하지 않는다면, 서버를 작동시켰는지
+      확인해보세요. <code>npm run server:part-3</code>으로 서버를 켤 수
+      있습니다.
+    </div>
+
+    <div id="mocha"></div>
+
+    <script src="01_basicChaining.js"></script>
+    <script src="02_promiseAll.js"></script>
+    <script src="03_asyncAwait.js"></script>
+
+    <script>
+      mocha.setup('bdd');
+      window.expect = chai.expect;
+      window.assert = chai.assert;
+    </script>
+    <script src="__test__/testSupport.js"></script>
+    <script src="__test__/01_basicChaining.test.js"></script>
+    <script src="__test__/02_promiseAll.test.js"></script>
+    <script src="__test__/03_asyncAwait.test.js"></script>
+    <script>
+      mocha.checkLeaks();
+      mocha.run();
+    </script>
+  </body>
+</html>

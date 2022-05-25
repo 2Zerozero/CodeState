@@ -1,3 +1,0 @@
-This is a file to read
-that once it's been read
-will not turn red.
