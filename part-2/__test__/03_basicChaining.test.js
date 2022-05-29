@@ -57,7 +57,6 @@ describe('Basic chaining Test', () => {
       readAllUsersChaining().then(() => {
         let matched = funcBody.match(/getDataFromFilePromise\(.+?\)/g) || [];
         expect(matched.length).toBe(2);
-        expect(fs.readFile.called).toBe(false);
         expect(fs.readFileSync.called).toBe(false);
         done();
       })
