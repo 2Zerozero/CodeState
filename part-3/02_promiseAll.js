@@ -1,6 +1,3 @@
-var newsURL = 'http://localhost:4999/data/latestNews';
-var weatherURL = 'http://localhost:4999/data/weather';
-
 function getNewsAndWeatherAll() {
   return Promise.all([
     fetch(newsURL),
