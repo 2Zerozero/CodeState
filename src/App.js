@@ -14,7 +14,7 @@ const App = () => {
           <main>
             <Sidebar />
             <section className="features">
-              {/* TODO - Switch와 Route 컴포넌트를 이용하여 경로(path)를 설정하고 Tweets, Mypage, About 컴포넌트를 연결합니다. */}
+              {/* TODO - Routes와 Route 컴포넌트를 이용하여 경로(path)를 설정하고 Tweets, Mypage, About 컴포넌트를 연결합니다. */}
               <Tweets />
             </section>
           </main>
