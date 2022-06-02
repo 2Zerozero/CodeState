@@ -83,7 +83,7 @@ describe('Bare minimum requirement', () => {
         expect(username).toHaveClass('tweet__username');
       });
 
-      test('트윗 생성 일자(yyyy. mm. dd.) 가 있어야 합니다.', () => {
+      test('트윗 생성 일자(yyyy. m. d.) 가 있어야 합니다.', () => {
         const { container, queryByText } = render(
           <Tweets tweets={dummyTweets.slice(0, 1)} />
         );
@@ -161,7 +161,7 @@ import userEvent from '@testing-library/user-event';
 // 필수 과제는 아닙니다.
 
 xdescribe('Advanced Challenge', () => {
-  test('Font Awesome을 npm으로 설치해야 합니다. (@fortawesome/react-fontawesome)', async () => {
+  test('Font Awesome을 npm으로 설치해야 합니다. (fontawesome-free or @fortawesome/react-fontawesome)', async () => {
     let haveFontAwesomeFree = false;
     let haveReactFontAwesome = false;
     const defaultPath = join(process.cwd(), 'node_modules/@fortawesome');
