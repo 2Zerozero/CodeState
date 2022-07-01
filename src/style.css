@@ -1,3 +1,64 @@
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: 0;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+main {
+  padding: 12px;
+  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
+    0 9px 28px 8px rgb(0 0 0 / 5%);
+  border-radius: 4px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2.25rem;
+}
+
+fieldset {
+  display: flex;
+  /* width: 320px; */
+  border-radius: 4px;
+  border-color: #f4f4f4;
+  justify-content: center;
+  margin: 8px;
+}
+
+fieldset > label {
+  display: inline-block;
+  width: 112px;
+}
+
+/* fieldset > div {
+} */
+
+button {
+  border: none;
+  border-radius: 4px;
+  width: 12rem;
+  height: 2rem;
+  /* margin: 12px; */
+}
+
+input {
+  border: none;
+  width: 12rem;
+}
+
+input:focus {
+  outline: none;
+}
+
 .hide {
   display: none;
+}
+
+.signup {
+  border: none;
 }
