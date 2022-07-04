@@ -25,6 +25,7 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 24px;
   box-shadow: var(--dropdown);
   border-radius: 4px;
@@ -37,6 +38,7 @@ h1 {
 
 fieldset {
   display: flex;
+  flex-direction: column;
   border-radius: 4px;
   border-color: var(--grayscale-10);
   justify-content: center;
@@ -49,11 +51,18 @@ fieldset > label {
   width: 112px;
 }
 
+main > div {
+  color: rgb(255, 35, 35);
+  font-size: var(--t2);
+  padding-left: 20px;
+}
+
 img {
   margin: 12px auto 36px;
 }
 
 button {
+  cursor: pointer;
   border: none;
   border-radius: 4px;
   width: 12rem;
@@ -61,6 +70,12 @@ button {
   color: var(--white);
   background-color: var(--purple);
   font-size: var(--t1);
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: var(--purple-3);
+  transform: scale(1.025);
 }
 
 input {
