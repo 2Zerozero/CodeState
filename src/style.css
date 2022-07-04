@@ -1,3 +1,10 @@
+* {
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+  color: var(--grayscale-90);
+  background-color: var(--white);
+  font-size: var(--default);
+}
+
 body {
   box-sizing: border-box;
   display: flex;
@@ -7,27 +14,34 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(223, 169, 169, 0.288),
+      rgba(255, 255, 255, 0)
+    ),
+    url('./images/codestates-motif.png');
 }
 
 main {
-  padding: 12px;
-  box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%),
-    0 9px 28px 8px rgb(0 0 0 / 5%);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  box-shadow: var(--dropdown);
   border-radius: 4px;
 }
 
 h1 {
   text-align: center;
-  font-size: 2.25rem;
+  font-size: var(--h1);
 }
 
 fieldset {
   display: flex;
-  /* width: 320px; */
   border-radius: 4px;
-  border-color: #f4f4f4;
+  border-color: var(--grayscale-10);
   justify-content: center;
-  margin: 8px;
+  margin: 4px;
+  padding: 8px 12px;
 }
 
 fieldset > label {
@@ -35,20 +49,24 @@ fieldset > label {
   width: 112px;
 }
 
-/* fieldset > div {
-} */
+img {
+  margin: 12px auto 36px;
+}
 
 button {
   border: none;
   border-radius: 4px;
   width: 12rem;
-  height: 2rem;
-  /* margin: 12px; */
+  height: 2.25rem;
+  color: var(--white);
+  background-color: var(--purple);
+  font-size: var(--t1);
 }
 
 input {
   border: none;
   width: 12rem;
+  font-size: var(--t1);
 }
 
 input:focus {

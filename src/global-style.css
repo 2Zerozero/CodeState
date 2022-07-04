@@ -1,0 +1,35 @@
+* {
+  /* Colors */
+  --black: #000000;
+  --grayscale-90: #1c1c1e;
+  --grayscale-80: #2c2c2e;
+  --grayscale-70: #363639;
+  --grayscale-60: #48484a;
+  --grayscale-50: #636366;
+  --grayscale-40: #8e8e93;
+  --grayscale-30: #afafb2;
+  --grayscale-20: #c6c6c6;
+  --grayscale-10: #f4f4f4;
+  --white: #ffffff;
+  --purple: #4000c7;
+  --purple-1: #5820cf;
+  --purple-2: #7040d6;
+  --purple-3: #8860dd;
+  --purple-4: #a080e4;
+  --purple-5: #b8a0eb;
+  --purple-6: #d0c0f2;
+  --purple-7: #e8e0f9;
+  /* fontSizes */
+  --default: 16px;
+  --h1: 36px;
+  --h2: 32px;
+  --h3: 24px;
+  --h4: 20px;
+  --h5: 18px;
+  --t1: 14px;
+  --t2: 12px;
+  --t3: 10px;
+  /* boxShadows */
+  --dropdown: 0 3px 6px -4px #0000001f, 0 6px 16px 0 #00000014,
+    0 9px 28px 8px #0000000d;
+}
