@@ -11,9 +11,9 @@ export default function Mypage({ accessToken, setIsLogin }) {
   const logoutHandler = () => {
     axios
       .delete('https://localhost:4000/logout', {
-        accessToken: accessToken,
+        data: { accessToken: accessToken },
       })
-      .then(() => {
+      .then((res) => {
         setIsLogin(false);
       })
       .catch((e) => {
