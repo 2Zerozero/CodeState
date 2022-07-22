@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
+import './global-style.css';
 import { dummyTweets } from './static/dummyData';
 // ! 위 코드는 수정하지 않습니다.
-console.log(dummyTweets) // 개발 단계에서 사용하는 더미 데이터입니다.
+console.log(dummyTweets); // 개발 단계에서 사용하는 더미 데이터입니다.
 
 const Sidebar = () => {
   return (
@@ -33,7 +34,6 @@ const Tweets = () => {
   return (
     <ul className="tweets">
       {dummyTweets.map((tweet) => {
-
         return (
           <li className="tweet" key={tweet.id}>
             <div className="tweet__profile">
@@ -73,11 +73,10 @@ const App = () => {
   return (
     <div className="App">
       <main>
-        TODO : Sidebar 
-        컴포넌트를 
-        작성합니다.
+        TODO : Sidebar 컴포넌트를 작성합니다.
         <Features />
       </main>
+      <img id="logo" src={`${process.env.PUBLIC_URL}/codestates-logo.png`} />
     </div>
   );
 };
