@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./public/favicon.ico" />
     <link
       href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
       rel="stylesheet"
       type="text/css"
     />
     <link rel="stylesheet" href="../global-style.css" />
-    <title>Document</title>
+    <title>Async & Promise Example</title>
     <style>
       * {
         box-sizing: border-box;
@@ -20,6 +21,15 @@
         text-decoration: none;
         -ms-overflow-style: none;
         scrollbar-width: none;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+        background-color: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: var(--coz-purple-500);
       }
 
       body {
@@ -57,6 +67,13 @@
         border-radius: 4px;
       }
 
+      #logo {
+        position: fixed;
+        right: 20px;
+        bottom: 16px;
+        width: 102px;
+      }
+
       #card {
         width: 400px;
         height: 400px;
@@ -92,6 +109,7 @@
     </style>
   </head>
   <body>
+    <img id="logo" src="./public/codestates-logo.png" />
     <div style="margin-bottom: 10px">
       animate with
       <button id="btnCallback">callback</button>
