@@ -12,7 +12,7 @@
   --point-color-tint: var(--coz-purple-400); /*#a296ee*/
   --point-color-tint-2: var(--coz-purple-200); /*#d8d3f8*/
   --default-text-color: var(--gray-900); /*#141414*/
-  --sub-text-color: var(--bluish-gray-500); /*#8c9cba*/
+  --sub-text-color: var(--gray-700); /*#5c5c5c*/
   --bold-text-color: black;
   --button-text-color: white;
   --shade-color: var(--gray-200); /*#e6e6e6*/
@@ -76,8 +76,12 @@ textarea {
 }
 
 footer {
+  position: relative;
   flex: 0 0 1rem;
   padding: 0.3rem;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-600);
   text-align: right;
   border: 2px solid var(--footer-component-color);
 }
@@ -244,8 +248,8 @@ main {
 }
 
 #logo {
-  position: fixed;
-  right: 20px;
-  bottom: 16px;
-  width: 102px;
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  height: 22px;
 }
