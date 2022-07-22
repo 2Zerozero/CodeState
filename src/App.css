@@ -15,11 +15,11 @@
   --bold-text-color: black;
   --button-text-color: white;
   --shade-color: var(--gray-200);
-  --sidebar-component-color: var(--peach-500);
-  --count-component-color: var(--bluish-gray-600);
-  --footer-component-color: var(--coz-orange-500);
-  --tweets-component-color: var(--coz-mint-200);
-  --tweet-component-color: var(--coz-blue-600);
+  --sidebar-component-color: #ff577f;
+  --count-component-color: #ffc764;
+  --footer-component-color: #ff884b;
+  --tweets-component-color: #cdfffc;
+  --tweet-component-color: #007580;
 }
 
 body {
