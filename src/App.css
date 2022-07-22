@@ -6,15 +6,15 @@
 }
 
 :root {
-  --main-border-color: var(--gray-100);
-  --point-color: var(--coz-purple-600);
-  --point-color-tint: var(--coz-purple-400);
-  --point-color-tint-2: var(--coz-purple-200);
-  --default-text-color: var(--gray-900);
-  --sub-text-color: var(--bluish-gray-500);
+  --main-border-color: var(--gray-100); /*#f0f0f0*/
+  --point-color: var(--coz-purple-600); /*#452cdd*/
+  --point-color-tint: var(--coz-purple-400); /*#a296ee*/
+  --point-color-tint-2: var(--coz-purple-200); /*#d8d3f8*/
+  --default-text-color: var(--gray-900); /*#141414*/
+  --sub-text-color: var(--bluish-gray-500); /*#8c9cba*/
   --bold-text-color: black;
   --button-text-color: white;
-  --shade-color: var(--gray-200);
+  --shade-color: var(--gray-200); /*#e6e6e6*/
   --sidebar-component-color: #ff577f;
   --count-component-color: #ffc764;
   --footer-component-color: #ff884b;
