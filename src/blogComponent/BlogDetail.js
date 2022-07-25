@@ -1,16 +1,18 @@
 import { useState } from "react";
 import{ useNavigate, useParams } from "react-router-dom";
 import useFetch from "../util/useFetch";
+import useScrollTop from "../util/useScrollTop";
 
 const BlogDetails = ({blogs}) => {
   const { id } = useParams();
-  const { data: blog, error, isPending } = useFetch('http://localhost:3000/blogs/' + id);
+  const { data: blog, error, isPending } = useFetch('http://localhost:3001/blogs/' + id);
   const [isLike, setIsLike] = useState(true);
   const navigate = useNavigate();
 
+  useScrollTop();
 
   const handleClick = () => {
-    fetch('http://localhost:3000/blogs/' + blog.id, {
+    fetch('http://localhost:3001/blogs/' + blog.id, {
       method: 'DELETE'
     }).then(() => {
       navigate('/');
@@ -37,7 +39,7 @@ const BlogDetails = ({blogs}) => {
       "likes" : result 
     };
 
-    fetch('http://localhost:3000/blogs/' + blog.id, {
+    fetch('http://localhost:3001/blogs/' + blog.id, {
       method: 'PUT',
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(putData)

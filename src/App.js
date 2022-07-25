@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import useFetch from "./util/useFetch";
+import useScrollTop from './util/useScrollTop';
 
 const Home = React.lazy(() => import('./Home'));
 const Navbar = React.lazy(() => import('./component/Navbar'));
@@ -11,7 +12,7 @@ const Loading = React.lazy(() => import('./component/Loading'));
 const Footer = React.lazy(() => import('./component/Footer'));
 
 function App() {  
-  const { error, isPending, data: blogs } = useFetch('http://localhost:3000/blogs')
+  const { error, isPending, data: blogs } = useFetch('http://localhost:3001/blogs');
 
   return (
     <BrowserRouter>
