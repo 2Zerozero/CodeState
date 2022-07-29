@@ -88,7 +88,7 @@ describe('Bare minimum requirement', () => {
           <Tweets tweets={dummyTweets.slice(0, 1)} />
         );
         const tweet = container.querySelector('.tweet');
-        const createdAt = queryByText('2019. 2. 25.');
+        const createdAt = queryByText('2022. 2. 25.');
 
         expect(tweet).toContainElement(createdAt);
         expect(createdAt).toHaveClass('tweet__createdAt');
