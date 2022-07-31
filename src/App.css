@@ -3,17 +3,18 @@
   font-size: 16px;
   margin: 0;
   padding: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
 }
 
 :root {
-  --main-border-color: rgb(235, 238, 240);
-  --point-color: rgb(64, 0, 199);
-  --point-color-tint: rgb(159, 127, 227);
-  --default-text-color: rgb(0, 0, 0);
-  --sub-text-color: rgb(91, 112, 131);
-  --bold-text-color: rgb(15, 20, 25);
-  --button-text-color: rgb(255, 255, 255);
-  --shade-color: rgb(229, 229, 229);
+  --main-border-color: var(--gray-100); /*#f0f0f0*/
+  --point-color: var(--coz-purple-600); /*#452cdd*/
+  --point-color-tint: var(--coz-purple-400); /*#a296ee*/
+  --default-text-color: var(--gray-900); /*#141414*/
+  --sub-text-color: var(--gray-700); /*#5c5c5c*/
+  --bold-text-color: black;
+  --button-text-color: white;
+  --shade-color: var(--gray-200); /*#e6e6e6*/
   --mypage-component-color: #eb9705;
   --about-component-color: #097e4d;
   --tweets-component-color: #003380;
@@ -71,10 +72,21 @@ textarea {
   min-height: 100%;
 }
 
-footer {
+/* footer {
   flex: 0 0 1rem;
   padding: 0.3rem;
   text-align: right;
+} */
+
+footer {
+  position: relative;
+  flex: 0 0 1rem;
+  padding: 0.3rem;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--gray-600);
+  text-align: right;
+  border: 2px solid var(--footer-component-color);
 }
 
 main {
@@ -173,4 +185,11 @@ main {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
   border-radius: 1rem;
+}
+
+#logo {
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  height: 22px;
 }
