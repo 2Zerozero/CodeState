@@ -25,7 +25,7 @@ const Tweets = () => {
       <ul className="tweets">
         {dummyTweets.map((tweet) => {
           return (
-          <li className="tweet" id={tweet.id} key={tweet.id}>
+          <li className="tweet" key={tweet.id}>
             <div className="tweet__profile">
               <img src={tweet.picture} />
             </div>

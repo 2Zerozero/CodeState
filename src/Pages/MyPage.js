@@ -26,7 +26,7 @@ const MyPage = () => {
       </div>
       <ul className="tweets__mypage">
         {/* TODO : dummyTweets중 kimcoding 이 작성한 트윗 메세지만 있어야 합니다. */}
-        <li className="tweet" id={""}>
+        <li className="tweet" key={""}>
           <div className="tweet__profile">
             <img src={""} />
           </div>
