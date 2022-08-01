@@ -5,7 +5,7 @@
   font-family: 'Spoqa Han Sans Neo', 'sans-serif';
   color: var(--gray-900);
   background-color: var(--white);
-  font-size: var(--default);
+  font-size: 16px;
 }
 
 body {
@@ -34,7 +34,7 @@ main {
 
 h1 {
   text-align: center;
-  font-size: var(--h1);
+  font-size: 36px;
 }
 
 fieldset {
@@ -54,7 +54,7 @@ fieldset > label {
 
 main > div {
   color: var(--peach-600);
-  font-size: var(--t2);
+  font-size: 12px;
   padding-left: 20px;
 }
 
@@ -71,7 +71,7 @@ button {
   height: 2.25rem;
   color: var(--white);
   background-color: var(--coz-purple-600);
-  font-size: var(--t1);
+  font-size: 14px;
   transition: all 0.3s;
 }
 
@@ -82,7 +82,7 @@ button:hover {
 input {
   border: none;
   width: 12rem;
-  font-size: var(--t1);
+  font-size: 14px;
 }
 
 input:focus {
