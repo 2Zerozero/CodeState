@@ -34,7 +34,7 @@ body {
 }
 
 .calculator__display--bare {
-  /* display: none; */
+  display: none;
   background-color: #ffffff;
   text-align: center;
   vertical-align: middle;
@@ -60,7 +60,6 @@ body {
 }
 
 .calculator__display--for-advanced {
-  display: none; /* 이 줄을 모두 지우면 advanced 테스트를 하실 수 있습니다.*/
   background-color: #ffffff;
   height: 100px;
   width: 100%;
@@ -74,6 +73,8 @@ body {
 }
 
 .calculator__buttons {
+  display: flex;
+  flex-direction: column;
   background-color: #ffffff;
   width: 100%;
   height: 330px;
@@ -83,6 +84,7 @@ body {
 }
 
 .clear__and__enter {
+  display: flex;
   height: 50px;
   margin: 10px;
   background-color: #f3f0fc;
@@ -96,9 +98,11 @@ body {
   background-color: #00da75;
   cursor: pointer;
   outline: none;
+  flex: 1;
 }
 
 .button__row {
+  display: flex;
   height: 50px;
   margin: 10px;
   background-color: #f3f0fc;
@@ -111,6 +115,7 @@ body {
   cursor: pointer;
   outline: none;
   background-color: #ebebeb;
+  flex: 1;
 }
 
 .button__row > .operator {
@@ -120,6 +125,7 @@ body {
 
 .button__row > .double {
   width: 115px;
+  flex-grow: 2;
 }
 
 .button__row > .isPressed {
@@ -132,4 +138,8 @@ body {
   padding: 30px;
   bottom: 0px;
   right: 0px;
+}
+
+.isPressed {
+  
 }
