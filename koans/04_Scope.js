@@ -51,6 +51,24 @@ describe('scope 대해서 학습합니다.', function () {
     expect(message).to.equal(FILL_ME_IN);
   });
 
+  it('default parameter에 대해 확인합니다.', function () {
+    function defaultParameter(num = 5) {
+      return num;
+    }
+
+    expect(defaultParameter()).to.equal(FILL_ME_IN);
+    expect(defaultParameter(10)).to.equal(FILL_ME_IN);
+
+    function pushNum(num, arr = []) {
+      arr.push(num);
+      return arr;
+    }
+
+    expect(pushNum(10)).to.deep.equal(FILL_ME_IN);
+    expect(pushNum(20)).to.deep.equal(FILL_ME_IN);
+    expect(pushNum(4, [1, 2, 3])).to.deep.equal(FILL_ME_IN);
+  });
+
   it('클로저(closure)에 대해 확인합니다.', function () {
     function increaseBy(increaseByAmount) {
       return function (numberToIncrease) {
