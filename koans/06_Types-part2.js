@@ -8,12 +8,12 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
  */
   it('원시 자료형은 값 자체에 대한 변경이 불가능(immutable)합니다.', function () {
     let name = 'codestates';
-    expect(name).to.equal(FILL_ME_IN);
-    expect(name.toUpperCase()).to.equal(FILL_ME_IN);
-    expect(name).to.equal(FILL_ME_IN);
+    expect(name).to.equal('codestates');
+    expect(name.toUpperCase()).to.equal('CODESTATES');
+    expect(name).to.equal('codestates');
     // 새로운 값으로 재할당은 가능합니다.
     name = name.toUpperCase();
-    expect(name).to.equal(FILL_ME_IN);
+    expect(name).to.equal('CODESTATES');
 
     /*
     원시 자료형은 값 자체에 대한 변경이 불가능하다고 하는데, 한 변수에 다른 값을 할당하는 것은 변경이 된 것이 아닌가요?
@@ -29,14 +29,14 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
     let allowedToDrink = overTwenty;
 
     overTwenty = false;
-    expect(overTwenty).to.equal(FILL_ME_IN);
-    expect(allowedToDrink).to.equal(FILL_ME_IN);
+    expect(overTwenty).to.equal(false);
+    expect(allowedToDrink).to.equal(true);
 
     let variable = 'variable';
     let variableCopy = 'variableCopy';
     variableCopy = variable;
     variable = variableCopy;
-    expect(variable).to.equal(FILL_ME_IN);
+    expect(variable).to.equal('variable');
   });
 
   it('원시 자료형 또는 원시 자료형의 데이터를 함수의 전달인자로 전달할 경우, 값 자체의 복사가 일어납니다.', function () {
@@ -45,14 +45,14 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
       year = year + 10;
     }
     afterTenYears(currentYear);
-    expect(currentYear).to.equal(FILL_ME_IN);
+    expect(currentYear).to.equal(2020);
     function afterTenYears2(currentYear) {
       currentYear = currentYear + 10;
       return currentYear;
     }
     let after10 = afterTenYears2(currentYear);
-    expect(currentYear).to.equal(FILL_ME_IN);
-    expect(after10).to.equal(FILL_ME_IN);
+    expect(currentYear).to.equal(2020);
+    expect(after10).to.equal(2030);
     // 사실 함수의 전달인자도 변수에 자료(data)를 할당하는 것입니다.
     // 함수를 호출하면서 넘긴 전달인자가 호출된 함수의 지역변수로 (매 호출 시마다) 새롭게 선언됩니다.
   });
@@ -106,20 +106,20 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
   */
   it('참조 자료형의 데이터는 동적(dynamic)으로 변합니다.', function () {
     const arr = [1, 2, 3];
-    expect(arr.length).to.equal(FILL_ME_IN);
+    expect(arr.length).to.equal(3);
     arr.push(4, 5, 6);
-    expect(arr.length).to.equal(FILL_ME_IN);
+    expect(arr.length).to.equal(6);
     arr.pop();
-    expect(arr.length).to.equal(FILL_ME_IN);
+    expect(arr.length).to.equal(5);
 
     const obj = {};
-    expect(Object.keys(obj).length).to.equal(FILL_ME_IN);
+    expect(Object.keys(obj).length).to.equal(0);
     obj['name'] = 'codestates';
     obj.quality = 'best';
     obj.product = ['sw engineering', 'product manager', 'growth marketing', 'data science'];
-    expect(Object.keys(obj).length).to.equal(FILL_ME_IN);
+    expect(Object.keys(obj).length).to.equal(3);
     delete obj.name;
-    expect(Object.keys(obj).length).to.equal(FILL_ME_IN);
+    expect(Object.keys(obj).length).to.equal(2);
   });
 
   it('참조 자료형을 변수에 할당할 경우, 데이터의 주소가 저장됩니다.', function () {
@@ -135,20 +135,20 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
     let allowedToDrink = overTwenty;
 
     overTwenty.push('san');
-    expect(allowedToDrink).to.deep.equal(FILL_ME_IN);
+    expect(allowedToDrink).to.deep.equal(overTwenty);
     overTwenty[1] = 'chanyoung';
-    expect(allowedToDrink[1]).to.deep.equal(FILL_ME_IN);
+    expect(allowedToDrink[1]).to.deep.equal('chanyoung');
     // .deep.equal은 배열의 요소나 객체의 속성이 서로 같은지 확인하는 matcher입니다.
     // .equal아닌 .deep.equal을 사용하는 이유는 아래 테스트 코드를 통해 고민하시기 바랍니다.
 
     const ages = [22, 23, 27];
     allowedToDrink = ages;
-    expect(allowedToDrink === ages).to.equal(FILL_ME_IN);
-    expect(allowedToDrink === [22, 23, 27]).to.equal(FILL_ME_IN);
+    expect(allowedToDrink === ages).to.equal(true); // allowedToDrink 가 ages; 를 할당 받고나서, [22, 23, 27] 배열을 받았다. 고로 ages = [22, 23, 27] 과 allowedToDrink = [22, 23, 27] 은 같다. 같은 주소라서 true 다.
+    expect(allowedToDrink === [22, 23, 27]).to.equal(false); // 왜 true 값이 안나오는지 알아보자. // 값은 같으나 , 주소 값이 달라서 false.
 
     const nums1 = [1, 2, 3];
     const nums2 = [1, 2, 3];
-    expect(nums1 === nums2).to.equal(FILL_ME_IN);
+    expect(nums1 === nums2).to.equal(false); // nums1 과 nums2의 주소 값이 달라서. false;
 
     const person = {
       son: {
@@ -158,10 +158,10 @@ describe('primitive data type과 reference data type에 대해서 학습합니�
 
     const boy = person.son;
     boy.age = 20;
-    expect(person.son.age).to.equal(FILL_ME_IN);
-    expect(person.son === boy).to.equal(FILL_ME_IN);
-    expect(person.son === { age: 9 }).to.equal(FILL_ME_IN);
-    expect(person.son === { age: 20 }).to.equal(FILL_ME_IN);
+    expect(person.son.age).to.equal(20);
+    expect(person.son === boy).to.equal(true);
+    expect(person.son === { age: 9 }).to.equal(false); // 값은 같지만, 주소 값이 다르다.
+    expect(person.son === { age: 20 }).to.equal(false); // 값은 같지만, 주소 값이 다르다.
 
     /*
     아래의 테스트 코드들은 선뜻 받아들이기 힘들 수 있습니다.

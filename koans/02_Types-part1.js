@@ -1,7 +1,7 @@
 describe('type에 대해서 학습합니다.', function () {
   it("비교연산자 '=='는 두 값의 일치 여부를 느슨하게 검사(loose equality)합니다.", function () {
     let actualValue = 1 + 1;
-    let expectedValue = FILL_ME_IN;
+    let expectedValue = 2;
     expect(actualValue == expectedValue).to.be.true;
 
     /*
@@ -12,16 +12,16 @@ describe('type에 대해서 학습합니다.', function () {
     아래 테스트 코드들의 주석을 제거해도 이 테스트는 통과합니다.
     */
 
-    // expect(0 == false).to.be.true;
-    // expect('' == false).to.be.true;
-    // expect([] == false).to.be.true;
-    // expect(![] == false).to.be.true;
-    // expect([] == ![]).to.be.true;
-    // expect([] == '').to.be.true;
-    // expect([] == 0).to.be.true;
-    // expect([''] == '').to.be.true;
-    // expect([''] == 0).to.be.true;
-    // expect([0] == 0).to.be.true;
+    expect(0 == false).to.be.true;
+    expect('' == false).to.be.true;
+    expect([] == false).to.be.true;
+    expect(![] == false).to.be.true;
+    expect([] == ![]).to.be.true;
+    expect([] == '').to.be.true;
+    expect([] == 0).to.be.true;
+    expect([''] == '').to.be.true;
+    expect([''] == 0).to.be.true;
+    expect([0] == 0).to.be.true;
   });
 
   /*
@@ -33,26 +33,26 @@ describe('type에 대해서 학습합니다.', function () {
 
   it("비교연산자 '==='는 두 값의 일치 여부를 엄격하게 검사(strict equality)합니다.", function () {
     let actualValue = 1 + 1;
-    let expectedValue = FILL_ME_IN;
+    let expectedValue = 2;
     expect(actualValue === expectedValue).to.be.true;
     // 이제 'FILL_ME_IN'을 대신할 수 있는 건 number 타입의 2뿐입니다.
     // 문자열 '2'는 테스트를 통과하지 못합니다.
   });
 
   it('expect의 전달인자로 들어간 표현식의 평가(evaluation) 결과를 예측해 봅니다.', function () {
-    expect(1 + '1').to.equal(FILL_ME_IN);
+    expect(1 + '1').to.equal('11');
   });
 
   it('expect의 전달인자로 들어간 표현식의 평가(evaluation) 결과를 예측해 봅니다.', function () {
-    expect(123 - '1').to.equal(FILL_ME_IN);
+    expect(123 - '1').to.equal(122);
   });
 
   it('expect의 전달인자로 들어간 표현식의 평가(evaluation) 결과를 예측해 봅니다.', function () {
-    expect(1 + true).to.equal(FILL_ME_IN);
+    expect(1 + true).to.equal(2);
   });
 
   it('expect의 전달인자로 들어간 표현식의 평가(evaluation) 결과를 예측해 봅니다.', function () {
-    expect('1' + true).to.equal(FILL_ME_IN);
+    expect('1' + true).to.equal('1true');
   });
 
   /*

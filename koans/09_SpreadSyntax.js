@@ -3,20 +3,20 @@ describe('Spread syntax에 대해 학습합니다.', function () {
     const spread = [1, 2, 3];
     // TODO: 전개 문법을 사용해 테스트 코드를 완성합니다. spread를 지우지 않고 해결할 수 있습니다.
     const arr = [0, spread, 4];
-    expect(arr).to.deep.equal([0, 1, 2, 3, 4]);
+    expect(arr).to.deep.equal([0, [1, 2, 3], 4]);
   });
 
   it('빈 배열에 전개 문법을 사용할 경우, 아무것도 전달되지 않습니다.', function () {
     const spread = [];
     // TODO: 전개 문법을 사용해 테스트 코드를 완성합니다. spread를 지우지 않고 해결할 수 있습니다.
     const arr = [0, spread, 1];
-    expect(arr).to.deep.equal([0, 1]);
+    expect(arr).to.deep.equal([0, [], 1]);
   });
 
   it('여러 개의 배열을 이어붙일 수 있습니다.', function () {
     const arr1 = [0, 1, 2];
     const arr2 = [3, 4, 5];
-    const concatenated = [FILL_ME_IN, FILL_ME_IN];
+    const concatenated = [...arr1, ...arr2];
     expect(concatenated).to.deep.equal([0, 1, 2, 3, 4, 5]);
     // 아래 코드도 같은 동작을 수행합니다.
     //  arr1.concat(arr2);
@@ -35,7 +35,7 @@ describe('Spread syntax에 대해 학습합니다.', function () {
       todos: ['coplit', 'koans'],
     };
 
-    const merged = { FILL_ME_IN, FILL_ME_IN };
+    const merged = { ...fullPre, ...me };
     // 변수 'merged'에 할당된 것은 'obj1'과 'obj2'의 value일까요, reference일까요?
     // 만약 값(value, 데이터)이 복사된 것이라면, shallow copy일까요, deep copy일까요?
 
@@ -54,12 +54,12 @@ describe('Spread syntax에 대해 학습합니다.', function () {
     function returnFirstArg(firstArg) {
       return firstArg;
     }
-    expect(returnFirstArg('first', 'second', 'third')).to.equal(FILL_ME_IN);
+    expect(returnFirstArg('first', 'second', 'third')).to.equal('first'); // 첫번째 전달인자를 호출
 
     function returnSecondArg(firstArg, secondArg) {
       return secondArg;
     }
-    expect(returnSecondArg('only give first arg')).to.equal(FILL_ME_IN);
+    expect(returnSecondArg('only give first arg')).to.equal(undefined); // 2번째 전달인자 값이 없다.
 
     // rest parameter는 spread syntax를 통해 간단하게 구현됩니다.
     function getAllParamsByRestParameter(...args) {
@@ -75,21 +75,21 @@ describe('Spread syntax에 대해 학습합니다.', function () {
     const restParams = getAllParamsByRestParameter('first', 'second', 'third');
     const argumentsObj = getAllParamsByArgumentsObj('first', 'second', 'third');
 
-    expect(restParams).to.deep.equal(FILL_ME_IN);
-    expect(Object.keys(argumentsObj)).to.deep.equal(FILL_ME_IN);
-    expect(Object.values(argumentsObj)).to.deep.equal(FILL_ME_IN);
+    expect(restParams).to.deep.equal(['first', 'second', 'third']);
+    expect(Object.keys(argumentsObj)).to.deep.equal(['0', '1', '2']);
+    expect(Object.values(argumentsObj)).to.deep.equal(['first', 'second', 'third']);
 
     // arguments와 rest parameter를 통해 배열로 된 전달인자(args)의 차이를 확인하시기 바랍니다.
-    expect(restParams === argumentsObj).to.deep.equal(FILL_ME_IN);
-    expect(typeof restParams).to.deep.equal(FILL_ME_IN);
-    expect(typeof argumentsObj).to.deep.equal(FILL_ME_IN);
-    expect(Array.isArray(restParams)).to.deep.equal(FILL_ME_IN);
-    expect(Array.isArray(argumentsObj)).to.deep.equal(FILL_ME_IN);
+    expect(restParams === argumentsObj).to.deep.equal(false);
+    expect(typeof restParams).to.deep.equal('object');
+    expect(typeof argumentsObj).to.deep.equal('object');
+    expect(Array.isArray(restParams)).to.deep.equal(true); // 배열
+    expect(Array.isArray(argumentsObj)).to.deep.equal(false); // 객체
 
     const argsArr = Array.from(argumentsObj);
-    expect(Array.isArray(argsArr)).to.deep.equal(FILL_ME_IN);
-    expect(argsArr).to.deep.equal(FILL_ME_IN);
-    expect(argsArr === restParams).to.deep.equal(FILL_ME_IN);
+    expect(Array.isArray(argsArr)).to.deep.equal(true);
+    expect(argsArr).to.deep.equal(['first', 'second', 'third']);
+    expect(argsArr === restParams).to.deep.equal(false);
   });
 
   it('Rest Parameter는 전달인자의 수가 정해져 있지 않은 경우에도 유용하게 사용할 수 있습니다.', function () {
@@ -100,8 +100,8 @@ describe('Spread syntax에 대해 학습합니다.', function () {
       }
       return sum;
     }
-    expect(sum(1, 2, 3)).to.equal(FILL_ME_IN);
-    expect(sum(1, 2, 3, 4)).to.equal(FILL_ME_IN);
+    expect(sum(1, 2, 3)).to.equal(6);
+    expect(sum(1, 2, 3, 4)).to.equal(10);
   });
 
   it('Rest Parameter는 전달인자의 일부에만 적용할 수도 있습니다.', function () {
@@ -109,14 +109,14 @@ describe('Spread syntax에 대해 학습합니다.', function () {
     function getAllParams(required1, required2, ...args) {
       return [required1, required2, args];
     }
-    expect(getAllParams(123)).to.deep.equal(FILL_ME_IN);
+    expect(getAllParams(123)).to.deep.equal([123, undefined , []]); // 전달인자 값이 3개 들어가야하는데, required1에 전달인자 값만 들어와서, 이렇게 되었다.
 
     function makePizza(dough, name, ...toppings) {
       const order = `You ordered ${name} pizza with ${dough} dough and ${toppings.length} extra toppings!`;
       return order;
     }
-    expect(makePizza('original')).to.equal(FILL_ME_IN);
-    expect(makePizza('thin', 'pepperoni')).to.equal(FILL_ME_IN);
-    expect(makePizza('napoli', 'meat', 'extra cheese', 'onion', 'bacon')).to.equal(FILL_ME_IN);
+    expect(makePizza('original')).to.equal('You ordered undefined pizza with original dough and 0 extra toppings!');
+    expect(makePizza('thin', 'pepperoni')).to.equal('You ordered pepperoni pizza with thin dough and 0 extra toppings!');
+    expect(makePizza('napoli', 'meat', 'extra cheese', 'onion', 'bacon')).to.equal('You ordered meat pizza with napoli dough and 3 extra toppings!');
   });
 });

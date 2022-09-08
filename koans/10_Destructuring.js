@@ -3,8 +3,8 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
     const array = ['code', 'states', 'im', 'course']
 
     const [first, second] = array
-    expect(first).to.eql(FILL_ME_IN)
-    expect(second).to.eql(FILL_ME_IN)
+    expect(first).to.eql('code')
+    expect(second).to.eql('states')
 
     const result = []
     function foo([first, second]) {
@@ -19,8 +19,8 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
   it('rest/spread 문법을 배열 분해에 적용할 수 있습니다', () => {
     const array = ['code', 'states', 'im', 'course']
     const [start, ...rest] = array
-    expect(start).to.eql(FILL_ME_IN)
-    expect(rest).to.eql(FILL_ME_IN)
+    expect(start).to.eql('code')
+    expect(rest).to.eql(['states', 'im', 'course'])
 
     // 다음과 같은 문법은 사용할 수 없습니다. 할당하기 전 왼쪽에는, rest 문법 이후에 쉼표가 올 수 없습니다
     // const [first, ...middle, last] = array
@@ -35,22 +35,22 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
       age,
       level: 'Junior',
     }
-    expect(person).to.eql(FILL_ME_IN)
+    expect(person).to.eql( {name: '김코딩', age: 28, level: 'Junior'} )
   })
 
   it('객체를 분해합니다', () => {
     const student = { name: '박해커', major: '물리학과' }
 
     const { name } = student
-    expect(name).to.eql(FILL_ME_IN)
+    expect(name).to.eql('박해커')
   })
 
   it('rest/spread 문법을 객체 분해에 적용할 수 있습니다 #1', () => {
     const student = { name: '최초보', major: '물리학과' }
     const { name, ...args } = student
 
-    expect(name).to.eql(FILL_ME_IN)
-    expect(args).to.eql(FILL_ME_IN)
+    expect(name).to.eql('최초보')
+    expect(args).to.eql( {major: '물리학과'} )
   })
 
   it('rest/spread 문법을 객체 분해에 적용할 수 있습니다 #2', () => {
@@ -60,7 +60,7 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
       return `${name}님은 ${grade}의 성적으로 ${course}을 수강했습니다`
     }
 
-    expect(getSummary(student)).to.eql(FILL_ME_IN)
+    expect(getSummary(student)).to.eql('최초보님은 B+의 성적으로 양자역학을 수강했습니다')
   })
 
   it('rest/spread 문법을 객체 분해에 적용할 수 있습니다 #3', () => {
@@ -96,10 +96,40 @@ describe('구조 분해 할당(Destructing Assignment)에 관해서', () => {
       }
     }
 
-    expect(changedUser).to.eql(FILL_ME_IN)
+    expect(changedUser).to.eql({
+      name: '박해커',
+      company: {
+        name: 'Code States',
+        department: 'Development',
+        role: {
+          name: 'Software Engineer'
+        }
+      },
+      age: 20
+    })
 
-    expect(overwriteChanges).to.eql(FILL_ME_IN)
+    expect(overwriteChanges).to.eql({
+      name: '김코딩',
+      company: {
+        name: 'Code States',
+        department: 'Development',
+        role: {
+          name: 'Software Engineer'
+        }
+      },
+      age: 35
+    })
 
-    expect(changedDepartment).to.eql(FILL_ME_IN)
+    expect(changedDepartment).to.eql({
+      name: '김코딩',
+      company: {
+        name: 'Code States',
+        department: 'Marketing',
+        role: {
+          name: 'Software Engineer'
+        }
+      },
+      age: 35
+    })
   })
 })

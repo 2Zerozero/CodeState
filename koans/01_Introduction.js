@@ -35,13 +35,13 @@ describe('expect에 대해서 학습합니다.', function () {
       expect(true).to.be.true;
     */
     // TODO: 테스트가 통과될 수 있도록(테스트하는 값이 true가 되도록) expect의 첫 번째 전달인자를 수정합니다.
-    expect(false).to.be.true;
+    expect(true).to.be.true;
   });
 
   it('테스트하는 값(expect의 전달인자)이 falsy 여부를 검사합니다.', function () {
     // 반대의 경우에는 어떻게 해야할까요?
     // TODO: 테스트가 통과될 수 있도록(테스트하는 값이 false가 되도록) expect의 첫 번째 전달인자를 수정합니다.
-    expect(true).to.be.false;
+    expect(false).to.be.false;
   });
 
   /*
@@ -59,7 +59,7 @@ describe('expect에 대해서 학습합니다.', function () {
   it("'테스트하는 값'을 '기대하는 값'과 비교한 결과가 참 인지 확인합니다.", function () {
     // '테스트하는 값'은 우리가 작성한 어떤 코드의 실제 실행 결과 값이므로 '실제 값'이라고 불러도 됩니다.
     let actualValue = 1 + 1;
-    let expectedValue = FILL_ME_IN; // TODO: 'FILL_ME_IN'을 변경하여 테스트 케이스를 완성합니다.
+    let expectedValue = 2; // TODO: 'FILL_ME_IN'을 변경하여 테스트 케이스를 완성합니다.
     expect(actualValue === expectedValue).to.be.true;
   });
 
@@ -74,13 +74,13 @@ describe('expect에 대해서 학습합니다.', function () {
   이후에도 같은 방식으로 'FILL_ME_IN' 변경하면 됩니다.
   */
   it('Matcher .equal 의 사용법을 학습합니다.', function () {
-    let expectedValue = FILL_ME_IN; // TODO
+    let expectedValue = 2; // TODO
     // .equal은 두 값이 타입까지 엄격하게 같은지 검사(strict equality, ===)합니다.
     expect(1 + 1).to.equal(expectedValue);
   });
 
   it('Matcher .equal의 사용법을 학습합니다.', function () {
     let actualValue = (1 + 1).toString();
-    expect(actualValue).to.equal(FILL_ME_IN); // TODO
+    expect(actualValue).to.equal('2'); // TODO
   });
 });
