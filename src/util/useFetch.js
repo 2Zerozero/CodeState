@@ -6,9 +6,12 @@ const useFetch = (url) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    //실수로 시작되거나 더 이상 필요 없는 비동기 작업에 대해 중단할 방법을 제공
+    //fetch도 비동기 요청이기 때문에, 이 비동기 작업의 중단을 위해 사용
     const abortCont = new AbortController();
 
     setTimeout(() => {
+      //요청과 통신하거나 중단하는 데에 사용하는 신호 역할
       fetch(url, { signal: abortCont.signal })
       .then(res => {
         if (!res.ok) { // error coming back from server
@@ -22,21 +25,16 @@ const useFetch = (url) => {
         setError(null);
       })
       .catch(err => {
-        if (err.name === 'AbortError') {
-          console.log('fetch aborted')
-        } else {
-          // auto catches network / connection error
-          setIsPending(false);
-          setError(err.message);
-        }
+        setIsPending(false);
+        setError(err.message);
       })
     }, 1000);
 
-    // abort the fetch
+    // abort the fetch. 완료되기 전에 DOM 요청 중단
     return () => abortCont.abort();
   }, [url])
 
-  return { data, isPending, error };
+  return [data, isPending, error ];
 }
 
  

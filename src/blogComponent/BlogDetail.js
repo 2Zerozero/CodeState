@@ -1,56 +1,36 @@
 import { useState } from "react";
-import{ useNavigate, useParams } from "react-router-dom";
+import{ useParams } from "react-router-dom";
+import Loading from "../component/Loading";
+import { fetchDelete, fetchPatch } from "../util/api";
 import useFetch from "../util/useFetch";
 import useScrollTop from "../util/useScrollTop";
 
-const BlogDetails = ({blogs}) => {
+const BlogDetails = () => {
   const { id } = useParams();
-  const { data: blog, error, isPending } = useFetch('http://localhost:3001/blogs/' + id);
-  const [isLike, setIsLike] = useState(true);
-  const navigate = useNavigate();
+  const [blog, isPending, error] = useFetch(`http://localhost:3001/blogs/${id}`)
+  const [isLike, setIsLike] = useState(false);
 
+  //advanced
   useScrollTop();
 
-  const handleClick = () => {
-    fetch('http://localhost:3001/blogs/' + blog.id, {
-      method: 'DELETE'
-    }).then(() => {
-      navigate('/');
-    })
+  const handleDeleteClick = () => {
+    /* delete 버튼을 누르면 다시 home으로 리다이렉트 되어야 합니다. */
+    /* useNavigate()를 이용하여 로직을 작성해주세요. */
+    fetchDelete('http://localhost:3001/blogs/', id);
   }
 
   const handleLikeClick = () => {
+    /* 하트를 누르면 home에서 새로고침을 했을 때 숫자가 올라가야 합니다. */
+    /* isLike와 blog.likes를 이용하여 handleLikeClick의 로직을 작성해주세요. */
     setIsLike(!isLike);
-    let result = blog.likes;
-    if(isLike === false) {
-      if(blog.likes > 0) {
-        result = blog.likes - 1;
-      }
-      result = blog.likes;
-    } else {
-      result = blog.likes + 1;
-    }
-
-    let putData = {
-      "id": blog.id,
-      "title": blog.title,
-      "body": blog.body,
-      "author": blog.author,
-      "likes" : result 
-    };
-
-    fetch('http://localhost:3001/blogs/' + blog.id, {
-      method: 'PUT',
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(putData)
-    }).then(() => {
-        navigate(`/blogs/${blog.id}`);
-    })
+    let patchData = {"likes" : blog.likes + 1};
+    fetchPatch('http://localhost:3001/blogs/', id, patchData);
   }
+
 
   return (
     <div className="blog-details">
-        { isPending && <div>Loading...</div> }
+        { isPending && <Loading/> }
         { error && <div>{ error }</div> }
         { blog && (
             <article>
@@ -58,9 +38,10 @@ const BlogDetails = ({blogs}) => {
                 <p>Written by { blog.author }</p>
                 <div>{ blog.body }</div>
                 <button onClick={handleLikeClick}>
-                  {isLike === false ? '❤️' : '🤍'}
+                  {/* isLike에 의해 조건부 렌더링으로 빨간 하트(❤️)와 하얀 하트(🤍)가 번갈아 보여야 합니다. */}
+                  {isLike === false ? '🤍' : '❤️'} {blog.likes}
                   </button>
-                <button onClick={handleClick}>delete</button>
+                <button onClick={handleDeleteClick}>delete</button>
             </article>
         )}
     </div>
