@@ -12,7 +12,7 @@ const DisplayBoard = ({numberOfBooks, getAllBook}) => {
                     </div>
                 </div>
                 <div className="get-button">
-                    <button onClick={() => getAllBook()}>Get all Users</button>
+                    <button onClick={() => getAllBook()}>Get all Books</button>
                 </div>
             </div>
         </div>
