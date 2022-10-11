@@ -5,25 +5,25 @@ const app = express(),
       port = 3070;
 
 // place holder for the data
-const books = [{
-  book: "from API v2",
-  category: "from API v2",
-  author: "from API v2"
+const todos = [{
+  todo: "산책하기",
+  category: "운동",
+  isComplete: true
   }];
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../my-app/build')));
 
-app.get('/api2/books', (req, res) => {
-  console.log('api/books called!')
-  res.json(books);
+app.get('/api2/todos', (req, res) => {
+  console.log('api/todos called!')
+  res.json(todos);
 });
 
-app.post('/api2/book', (req, res) => {
-  const book = req.body.book;
-  console.log('Adding user:::::', book);
-  books.push(book);
-  res.json("book addedd");
+app.post('/api2/todo', (req, res) => {
+  const todo = req.body.todo;
+  console.log('Adding user:::::', todo);
+  books.push(todo);
+  res.json("todo added!");
 });
 
 app.get('/', (req,res) => {

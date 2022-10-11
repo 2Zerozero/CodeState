@@ -5,7 +5,11 @@ const app = express(),
       port = 3080;
 
 // place holder for the data
-const books = [];
+const books = [{
+  book: "폭풍의 언덕",
+  category: "영미/고전",
+  author: "에밀리 브론테"
+  }];
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../my-app/build')));
@@ -19,7 +23,7 @@ app.post('/api/book', (req, res) => {
   const book = req.body.book;
   console.log('Adding book:::::', book);
   books.push(book);
-  res.json("book addedd");
+  res.json("book added");
 });
 
 app.get('/', (req,res) => {
