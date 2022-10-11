@@ -22,7 +22,7 @@ app.get('/api2/todos', (req, res) => {
 app.post('/api2/todo', (req, res) => {
   const todo = req.body.todo;
   console.log('Adding user:::::', todo);
-  books.push(todo);
+  todos.push(todo);
   res.json("todo added!");
 });
 
