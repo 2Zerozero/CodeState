@@ -31,9 +31,12 @@ nav .container {
 }
 
 .logo {
-    flex: 15%;
+    flex: 20%;
     font-size: 1.25rem;
     padding-left: 20px;
+    animation-name: sizeUp;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 
 .navbar {
@@ -81,7 +84,7 @@ section .container {
 }
 
 .postlist {
-    padding: 60px  40px;
+    padding: 60px 40px;
     width: 1080px;
     margin: 0 auto;
 }
@@ -164,6 +167,7 @@ footer .container {
 
     nav .container {
         width: 800px;
+        height: 80px;
     }
 
     .logo {
@@ -235,4 +239,14 @@ footer .container {
         padding-bottom: 40px;
     }
     
+}
+
+/* 키프레임 */
+@keyframes sizeUp {
+    from {
+        font-size: 1.25rem;
+    }
+    to {
+        font-size: 1.75rem;
+    }
 }
