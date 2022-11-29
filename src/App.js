@@ -15,30 +15,30 @@ const Loading = React.lazy(() => import('./component/Loading'));
 
 function App() {
   
-  const [blogs, isPending, error] = useFetch("http://localhost:3001/blogs/");
+    const [blogs, isPending, error] = useFetch("http://localhost:3001/blogs/");
 
-  //advanced
-  useScrollTop();
+    //advanced
+    useScrollTop();
 
-  return (
-    <BrowserRouter>
-      { error && <div>{ error }</div> }
-      <Suspense fallback={<Loading/>}>
-        <div className="app">
-          <Navbar />
-          <div className="content">
-            <Routes>
-              <Route exact path="/" element={<Home blogs={blogs} isPending={isPending} />} />
-              <Route path="/create" element={<CreateBlog blogs={blogs} />} />
-              <Route path="/blogs/:id" element={<BlogDetails />} />
-              <Route path="/blogs/:id" element={<NotFound />} />
-            </Routes>
-          </div>
-          <Footer/>
-        </div>
-      </Suspense>
-    </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            { error && <div>{ error }</div> }
+            <Suspense fallback={<Loading/>}>
+                <div className="app">
+                    <Navbar />
+                    <div className="content">
+                        <Routes>
+                            <Route exact path="/" element={<Home blogs={blogs} isPending={isPending} />} />
+                            <Route path="/create" element={<CreateBlog blogs={blogs} />} />
+                            <Route path="/blogs/:id" element={<BlogDetails />} />
+                            <Route path="/blogs/:id" element={<NotFound />} />
+                        </Routes>
+                    </div>
+                    <Footer/>
+                </div>
+            </Suspense>
+        </BrowserRouter>
+    )
 }
 
 export default App;

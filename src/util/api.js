@@ -5,7 +5,6 @@
 const BASE_URL = 'http://localhost:3000/';
 const BLOG_URL = 'http://localhost:3000/blogs/';
 
-
 export const fetchCreate = (url, data) => {
     fetch(url, {
         method: "POST",

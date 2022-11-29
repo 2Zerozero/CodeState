@@ -6,18 +6,18 @@ const Select = ({label, value, uniqueArr}) => {
         <>
             <label>{label}</label>
             <select
-              {...value}
+                {...value}
             >
-              {uniqueArr.map((el) => {
-                return(
-                  <option
-                    key={el.id}
-                    value={el.author}
-                  >
-                    {el.author}
-                  </option>
-                )
-              })}
+                {uniqueArr.map((el) => {
+                    return(
+                        <option
+                            key={el.id}
+                            value={el.author}
+                        >
+                            {el.author}
+                        </option>
+                    )
+                })}
             </select>
         </>
     )
