@@ -1,0 +1,11 @@
+{
+  "name": "token-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Hong Shik Branden Kim <kimploo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "jsonwebtoken": "^8.5.1"
+  }
+}
