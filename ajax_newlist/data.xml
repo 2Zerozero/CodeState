@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<channel>
+  <title>Web Professional</title>
+  <link>http://naver.com</link>
+  <date>월요일 5월 10일</date>
+  <item>
+    <title>"우주에서 숨쉰다." 지구 밖 '산소분자' 최초발견</title>
+    <date>토요일 5월 8일</date>
+    <link>http://daum.net</link>
+    <!-- <description><strong>지구sdf</strong>를 떠나서 우주에서 숨을 쉬는 일(중략) 설명했다.</description> -->
+    <description><![CDATA[<strong>지구sdf</strong>를 떠나서 우주에서 숨을 쉬는 일(중략) 설명했다.]]></description>
+  </item>
+  <item>
+    <title>북한 해커 남한 온라인게임 털어 외화벌이</title>
+    <date>일요일 5월 9일</date>
+    <link>http://facebook.com</link>
+    <description>국산 온라인게임 프로그램을 해킹해 (중략) 단속할 필요가 있다고 말했다.</description>
+  </item>
+  <item>
+    <title>[종합] 코로나19 확진자 146명, 서울 39명, 경기 42명</title>
+    <date>월요일 5월 10일</date>
+    <link>http://instagram.com</link>
+    <description>질병관리청 중앙방역대책본부는 10일 오전 0시 기준 국내 (중략) 중가한 2만 7799명이라고 밝혔다.</description>
+  </item>
+</channel>
