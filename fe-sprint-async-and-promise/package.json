@@ -1,0 +1,37 @@
+{
+  "name": "fe-sprint-async-and-promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "codestates-assignment-manager": "^1.8.0",
+    "jest": "^24.9.0",
+    "sinon": "^9.0.3",
+    "supertest": "^4.0.2"
+  },
+  "scripts": {
+    "test:part-2": "jest --runInBand part-2/__test__/**.test.js",
+    "server:part-3": "node part-3/__test__/app.js",
+    "report": "jest --runInBand part-2/__test__/**.test.js --json --outputFile=report.jest.json",
+    "submit": "codestates"
+  },
+  "jest": {
+    "testSequencer": "./testSequencer.js",
+    "testTimeout": 2000,
+    "reporters": [
+      "default",
+      [
+        "./node_modules/codestates-assignment-manager/imposter-reporter/index.js",
+        {
+          "project_id": "async-and-promise"
+        }
+      ]
+    ]
+  },
+  "author": "codestates",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}

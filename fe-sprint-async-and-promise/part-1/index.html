@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./public/favicon.ico" />
+    <link
+      href="//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="../global-style.css" />
+    <title>Async & Promise Example</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+        text-decoration: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      ::-webkit-scrollbar {
+        width: 8px;
+        background-color: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 4px;
+        background-color: var(--coz-purple-500);
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      button {
+        margin: 8px;
+        padding: 4px 8px;
+        color: var(--white);
+        background-color: var(--coz-purple-600);
+        border: none;
+        border-radius: 4px;
+        min-width: 60px;
+        transition: all 0.3s;
+        box-shadow: var(--15px);
+        cursor: pointer;
+        user-select: none;
+      }
+
+      button:hover {
+        background-color: var(--coz-purple-500);
+      }
+
+      div {
+        margin: 8px;
+      }
+
+      input {
+        min-width: 60px;
+        padding: 1px 2px;
+        border: 1px solid var(--gray-200);
+        border-radius: 4px;
+      }
+
+      #logo {
+        position: fixed;
+        right: 20px;
+        bottom: 16px;
+        width: 102px;
+      }
+
+      #card {
+        width: 400px;
+        height: 400px;
+        position: relative;
+        border: 1px solid var(--gray-400);
+        box-shadow: var(--big-box);
+      }
+
+      #title {
+        visibility: hidden;
+        opacity: 0;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: black;
+        transition: visibility 0.5s, opacity 0.5s, background-color 0.5s,
+          color 0.5s linear;
+
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        margin: 0;
+        padding: 10px;
+      }
+
+      #title.visible {
+        visibility: visible;
+        opacity: 1;
+      }
+
+      #title.highlight {
+        background-color: rgba(255, 146, 71, 0.8); /* coz orange 500 */
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="logo" src="./public/codestates-logo.png" />
+    <div style="margin-bottom: 10px">
+      animate with
+      <button id="btnCallback">callback</button>
+      <button id="btnPromise">promise</button>
+      <button id="btnAsync">async & await</button>
+    </div>
+
+    <div id="card">
+      <video id="player" muted playsinline loop width="398">
+        <source src="bom.webm" type="video/webm" />
+      </video>
+      <h1 id="title">cutest cat ever</h1>
+    </div>
+
+    <div
+      id="logger-list"
+      style="height: 200px; width: 100%; max-width: 1200px; overflow-y: scroll"
+    >
+      <div
+        id="logger"
+        style="
+          background-color: var(--blackalpha-200);
+          padding: 10px;
+          font-size: 0.9em;
+        "
+      ></div>
+    </div>
+
+    <script src="01_callback.js"></script>
+    <script src="02_promiseConstructor.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
