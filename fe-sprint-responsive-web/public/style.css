@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 1);
+}
+
+h1 { font-size: 4rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+img { width: 100%; height: 100%; }
+body { background: rgba(20, 20, 20, 1);}
+
+#root {
+    width: 1280px;
+    margin: 0 auto;
+}
+
+/* nav */
+nav {
+    display: flex;
+}
+
+nav .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1280px;
+    height: 60px;
+}
+
+.logo {
+    flex: 20%;
+    font-size: 1.25rem;
+    padding-left: 20px;
+    animation-name: sizeUp;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row-reverse;
+    flex: 85%;
+}
+
+.navbar .navbar-list {
+    display: flex;
+}
+
+.nav-item {
+    padding: 24px 16px;
+    
+}
+
+/* header */
+header .container {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    width: 1280px;
+    height: 600px;
+    background: url(./Backgorund.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header .container .wrapper {
+    text-align: center;
+}
+
+header .container .wrapper span {
+    font-size: 1.5rem;
+}
+
+/* section */
+section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 1280px;
+}
+
+.postlist {
+    padding: 60px 40px;
+    width: 1080px;
+    margin: 0 auto;
+}
+
+.post {
+    border-bottom: solid 1px;
+    padding: 40px 0 40px;
+}
+
+.post p {
+    font-size: 1rem;
+    padding-top: 10px;
+}
+
+.post p a {
+    color:rgba(192, 30, 30, 1)
+}
+
+.btn {
+    padding-bottom: 40px;
+}
+/* footer */
+footer {
+    border-top: solid 1px;
+}
+footer .container {
+    display: flex;
+    flex-direction: column;
+    width: 1280px;
+    height: 80px;
+    margin: 0 auto;
+    padding-top: 60px;
+}
+
+.icon-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-list .icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 6px;
+    padding-bottom: 20px;
+}
+
+.copyright {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+/* hover */
+.nav-item:hover {
+    transition: 0.2s;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.post a h2:hover {
+    transition: 0.2s;
+    color: rgba(48, 150, 48, 0.6);
+}
+
+.btn a:hover {
+    transition: 0.2s;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* 미디어쿼리 반응형 */
+@media screen and (max-width: 800px) {
+    #root {
+        width: 800px;
+    }
+
+    /* nav */
+    nav {
+        position: fixed;
+        background: rgba(0, 0, 0, 0.6);
+    }
+
+    nav .container {
+        width: 800px;
+        height: 80px;
+    }
+
+    .logo {
+        flex: 20%;
+        font-size: 1.25rem;
+        padding-left: 20px;
+    }
+    
+    .navbar {
+        display: flex;
+        flex-direction: row-reverse;
+        flex: 80%;
+    }
+
+    /* header */
+    header .container {
+        width: 800px;
+    }
+
+    header .container .wrapper h1 { font-size: 5rem;}
+    header .container .wrapper span { font-size: 2rem; }
+
+    /* section */
+    section .container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        width: 800px;
+    }
+
+    .postlist {
+        padding: 40px 20px;
+        width: 600px;
+        margin: 0 auto;
+    }
+
+    .post a h2 {
+        font-size: 1.75rem;
+    }
+
+    .post a h3 {
+        font-size: 1.25rem;
+    }
+
+    .post p {
+        font-size: 1rem;
+        padding-top: 10px;
+    }
+
+    .btn {
+        margin-right: 100px;
+        padding-bottom: 40px;
+    }
+
+    /* footer */
+    footer .container {
+        width: 800px;
+        height: 60px;
+    }
+    
+    .icon-list .icon {
+        width: 40px;
+        height: 40px;
+        margin: 0 6px;
+        padding-bottom: 20px;
+    }
+    
+    .copyright {
+        padding-bottom: 40px;
+    }
+    
+}
+
+/* 키프레임 */
+@keyframes sizeUp {
+    from {
+        font-size: 1.25rem;
+    }
+    to {
+        font-size: 1.75rem;
+    }
+}
